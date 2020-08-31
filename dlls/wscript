@@ -1,0 +1,61 @@
+#! /usr/bin/env python
+# encoding: utf-8
+# a1batross, mittorn, 2018
+
+from waflib import Utils
+import os
+
+def options(opt):
+	# stub
+	return
+
+def configure(conf):
+	if conf.env.COMPILER_CC == 'msvc':
+		# hl.def removes MSVC function name decoration from GiveFnptrsToDll on Windows.
+		# Without this, the lookup for this function fails.
+		hlDefNode = conf.path.find_resource("./hl.def")
+
+		if hlDefNode is not None:
+			conf.env.append_unique('LINKFLAGS', '/def:%s' % hlDefNode.abspath())
+		else:
+			conf.fatal("Could not find hl.def")
+
+def build(bld):
+	source = bld.path.parent.ant_glob([
+		'pm_shared/*.cpp',
+		'game_shared/*.cpp'
+	])
+	source += bld.path.ant_glob([
+		'*.cpp'
+	])
+
+	includes = [
+		'.',
+		'../common',
+		'../engine',
+		'../pm_shared',
+		'../game_shared',
+		'../public'
+	]
+
+	defines = []
+	libs = []
+
+	if bld.env.DEST_OS not in ['android', 'dos']:
+		install_path = os.path.join(bld.env.GAMEDIR, bld.env.SERVER_DIR)
+	else:
+		install_path = bld.env.PREFIX
+
+	bld.shlib(
+		source   = source,
+		target   = bld.env.SERVER_NAME + bld.env.POSTFIX,
+		name     = 'server',
+		features = 'c cxx',
+		includes = includes,
+		defines  = defines,
+		use      = libs,
+		install_path = install_path,
+		subsystem = bld.env.MSVC_SUBSYSTEM,
+		idx      = bld.get_taskgen_count()
+	)
+
