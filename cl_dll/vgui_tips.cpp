@@ -11,7 +11,7 @@
 #include "vgui_TeamFortressViewport.h"
 #include "vgui_tips.h"
 #include "vgui_shadowtext.h"
-#include "..\game_shared\vgui_loadtga.h"
+#include "../game_shared/vgui_loadtga.h"
 #include "getfont.h"
 
 #define TIPS_APPEAR_TIME		0.15

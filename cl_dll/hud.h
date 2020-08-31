@@ -29,8 +29,12 @@
 #define RGB_REDISH 0x00FF1010 //255,160,0
 #define RGB_GREENISH 0x0000A000 //0,160,0
 
+#include "port.h"
+
 #include "wrect.h"
+#ifdef XASH_WIN32
 #include "windows.h"
+#endif
 #include "cl_dll.h"
 #include "render_api.h"
 #include "enginecallback.h"
@@ -110,7 +114,7 @@ struct HUDLIST {
 //
 //-----------------------------------------------------
 //
-#include "..\game_shared\voice_status.h"
+#include "../game_shared/voice_status.h"
 #include "hud_spectator.h"
 
 
