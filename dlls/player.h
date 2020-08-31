@@ -209,7 +209,7 @@ public:
 	float		m_flClientBlurAmount;
 	float		m_flClientLevelTime;
 
-	void ViewPunch( float p, float y, float r ); // buz - нагло спер из хл2
+	void ViewPunch( float p, float y, float r ); // buz - РЅР°РіР»Рѕ СЃРїРµСЂ РёР· С…Р»2
 
 	// usable player items 
 	CBasePlayerItem *m_rgpPlayerItems[MAX_ITEM_TYPES];

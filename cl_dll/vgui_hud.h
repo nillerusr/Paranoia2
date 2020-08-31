@@ -30,7 +30,7 @@ protected:
 	virtual void paint();
 
 protected:
-	// Wargon: Иконка юза.
+	// Wargon: РРєРѕРЅРєР° СЋР·Р°.
 	CImageLabel	*m_pUsageIcon;
 	float		m_fUsageUpdateTime;
 

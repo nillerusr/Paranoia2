@@ -2549,7 +2549,7 @@ PM_DropPunchAngle
 
 void PM_DropPunchAngle ( Vector &punchangle )
 {
-	// buz: ó íàñ òåïåğü íîâûé, ñâåæåñïåğòûé èç õë2, ïóí÷.
+	// buz: Ñƒ Ğ½Ğ°Ñ Ñ‚ĞµĞ¿ĞµÑ€ÑŒ Ğ½Ğ¾Ğ²Ñ‹Ğ¹, ÑĞ²ĞµĞ¶ĞµÑĞ¿ĞµÑ€Ñ‚Ñ‹Ğ¹ Ğ¸Ğ· Ñ…Ğ»2, Ğ¿ÑƒĞ½Ñ‡.
 	float damping;
 	float springForceMagnitude;
 	Vector savepunch = Vector( pmove->fuser2, pmove->fuser3, pmove->fuser4 );

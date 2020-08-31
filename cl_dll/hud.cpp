@@ -471,7 +471,7 @@ void MakeLight( void )
 
 void GammaGraphInit();
 
-void CanUseInit( void ); // Wargon: Иконка юза.
+void CanUseInit( void ); // Wargon: РРєРѕРЅРєР° СЋР·Р°.
 
 // This is called every time the DLL is loaded
 void CHud :: Init( void )
@@ -484,7 +484,7 @@ void CHud :: Init( void )
 	SubtitleInit(); // buz
 	TabPanelInit(); // buz
 
-	CanUseInit(); // Wargon: Иконка юза.
+	CanUseInit(); // Wargon: РРєРѕРЅРєР° СЋР·Р°.
 
 	// pointer to headshield entity
 	m_pHeadShieldEnt = &head_shield;

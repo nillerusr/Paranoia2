@@ -268,7 +268,7 @@ int gmsgWeaponSkin = 0;
 int gmsgPartEffect = 0;
 int gmsgBlurEffect = 0;
 int gmsgLevelTime = 0;
-// Wargon: Иконка юза.
+// Wargon: РРєРѕРЅРєР° СЋР·Р°.
 int gmsgCanUse = 0;
 
 void LinkUserMessages( void )
@@ -348,7 +348,7 @@ void LinkUserMessages( void )
 	gmsgBlurEffect = REG_USER_MSG( "BlurEffect", 2 );
 	gmsgLevelTime = REG_USER_MSG( "LevelTime", 4 );
 
-	// Wargon: Иконка юза.
+	// Wargon: РРєРѕРЅРєР° СЋР·Р°.
 	gmsgCanUse = REG_USER_MSG("CanUse", -1);
 }
 
@@ -598,8 +598,8 @@ int CBasePlayer :: TakeDamage( entvars_t *pevInflictor, entvars_t *pevAttacker, 
 	}
 
 	// Armor. 
-	// buz: броня не спасает от ударов вплотную
-	// Wargon: Броня также не защищает от газа. (1.1)
+	// buz: Р±СЂРѕРЅСЏ РЅРµ СЃРїР°СЃР°РµС‚ РѕС‚ СѓРґР°СЂРѕРІ РІРїР»РѕС‚РЅСѓСЋ
+	// Wargon: Р‘СЂРѕРЅСЏ С‚Р°РєР¶Рµ РЅРµ Р·Р°С‰РёС‰Р°РµС‚ РѕС‚ РіР°Р·Р°. (1.1)
 	if (pev->armorvalue && !(bitsDamageType & (DMG_FALL | DMG_DROWN | DMG_CLUB | DMG_SLASH | DMG_NERVEGAS)) )// armor doesn't protect against fall or drown damage!
 	{
 		float flNew = flDamage * flRatio;
@@ -1020,7 +1020,7 @@ entvars_t *g_pevLastInflictor;  // Set in combat.cpp.  Used to pass the damage i
 
 void CBasePlayer::Killed( entvars_t *pevAttacker, int iGib )
 {
-	// Wargon: Если игрока убили хедшотом, то выводится соответствующая мессага.
+	// Wargon: Р•СЃР»Рё РёРіСЂРѕРєР° СѓР±РёР»Рё С…РµРґС€РѕС‚РѕРј, С‚Рѕ РІС‹РІРѕРґРёС‚СЃСЏ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰Р°СЏ РјРµСЃСЃР°РіР°.
 	if (m_LastHitGroup == HITGROUP_HEAD)
 		UTIL_ShowMessage("#TIPS_HEADSHOOT", this );
 
@@ -1585,7 +1585,7 @@ void CBasePlayer::StartObserver( Vector vecPosition, Vector vecViewAngle )
 // PlayerUse - handles USE keypress
 //
 #define	PLAYER_SEARCH_RADIUS	(float)64
-#define PLAYER_DISTUSE_RADIUS	(float)128 // Wargon: Расстояние дальнего юза уменьшено.
+#define PLAYER_DISTUSE_RADIUS	(float)128 // Wargon: Р Р°СЃСЃС‚РѕСЏРЅРёРµ РґР°Р»СЊРЅРµРіРѕ СЋР·Р° СѓРјРµРЅСЊС€РµРЅРѕ.
 
 void CBasePlayer::PlayerUse ( void )
 {
@@ -4810,14 +4810,14 @@ void CBasePlayer :: UpdateClientData( void )
 		m_flNextSBarUpdateTime = gpGlobals->time + 0.2;
 	}
 
-	// Wargon: Если костюма нет, то фонарик выключается.
+	// Wargon: Р•СЃР»Рё РєРѕСЃС‚СЋРјР° РЅРµС‚, С‚Рѕ С„РѕРЅР°СЂРёРє РІС‹РєР»СЋС‡Р°РµС‚СЃСЏ.
 	if (!FBitSet( m_iHideHUD, ITEM_SUIT ) && FlashlightIsOn())
 		FlashlightTurnOff();
 
 //    if ( pev->waterlevel == 3 && FlashlightIsOn())
 //		FlashlightTurnOff();
 
-	// Wargon: Серверный код иконки юза.
+	// Wargon: РЎРµСЂРІРµСЂРЅС‹Р№ РєРѕРґ РёРєРѕРЅРєРё СЋР·Р°.
 	CBaseEntity *pObject = NULL;
 	CBaseEntity *pClosest = NULL;
 	Vector vecLOS;

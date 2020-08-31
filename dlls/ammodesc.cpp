@@ -333,7 +333,7 @@ void UTIL_InitAmmoDescription( const char *filename )
 
 LINK_ENTITY_TO_CLASS( ammo_generic, CBasePlayerAmmo );
 
-// Wargon: SaveData для юзабельности патронов.
+// Wargon: SaveData РґР»СЏ СЋР·Р°Р±РµР»СЊРЅРѕСЃС‚Рё РїР°С‚СЂРѕРЅРѕРІ.
 TYPEDESCRIPTION CBasePlayerAmmo::m_SaveData[] = 
 {
 	DEFINE_FIELD( CBasePlayerAmmo, m_bCustomAmmo, FIELD_BOOLEAN ),
@@ -412,7 +412,7 @@ void CBasePlayerAmmo :: Spawn( void )
 	if( !FBitSet( ObjectCaps(), FCAP_USE_ONLY ) || FBitSet( pev->spawnflags, SF_NORESPAWN ))
 		SetTouch( &CBasePlayerAmmo:: DefaultTouch );
 
-	// Wargon: Патроны юзабельны.
+	// Wargon: РџР°С‚СЂРѕРЅС‹ СЋР·Р°Р±РµР»СЊРЅС‹.
 	SetUse( &CBasePlayerAmmo :: DefaultUse );
 	m_iAmmoCaps = CBaseEntity::ObjectCaps() | FCAP_IMPULSE_USE;
 }
@@ -433,7 +433,7 @@ CBaseEntity *CBasePlayerAmmo :: Respawn( void )
 	SetBits( pev->effects, EF_NODRAW );
 	SetTouch( NULL );
 
-	// Wargon: Патроны неюзабельны.
+	// Wargon: РџР°С‚СЂРѕРЅС‹ РЅРµСЋР·Р°Р±РµР»СЊРЅС‹.
 	SetUse( NULL );
 	m_iAmmoCaps = CBaseEntity::ObjectCaps();
 
@@ -459,7 +459,7 @@ void CBasePlayerAmmo :: Materialize( void )
 	if( !FBitSet( ObjectCaps(), FCAP_USE_ONLY ))
 		SetTouch( &CBasePlayerAmmo:: DefaultTouch );
 
-	// Wargon: Патроны юзабельны.
+	// Wargon: РџР°С‚СЂРѕРЅС‹ СЋР·Р°Р±РµР»СЊРЅС‹.
 	SetUse( &CBasePlayerAmmo :: DefaultUse );
 	m_iAmmoCaps = CBaseEntity :: ObjectCaps() | FCAP_IMPULSE_USE;
 }
@@ -481,7 +481,7 @@ void CBasePlayerAmmo :: DefaultTouch( CBaseEntity *pOther )
 		{
 			SetTouch( NULL );
 
-			// Wargon: Патроны неюзабельны.
+			// Wargon: РџР°С‚СЂРѕРЅС‹ РЅРµСЋР·Р°Р±РµР»СЊРЅС‹.
 			SetUse( NULL );
 			m_iAmmoCaps = CBaseEntity :: ObjectCaps();
 			SetThink( &CBasePlayerAmmo :: SUB_Remove );
@@ -493,7 +493,7 @@ void CBasePlayerAmmo :: DefaultTouch( CBaseEntity *pOther )
 		// evil impulse 101 hack, kill always
 		SetTouch( NULL );
 
-		// Wargon: Патроны неюзабельны.
+		// Wargon: РџР°С‚СЂРѕРЅС‹ РЅРµСЋР·Р°Р±РµР»СЊРЅС‹.
 		SetUse( NULL );
 		m_iAmmoCaps = CBaseEntity :: ObjectCaps();
 

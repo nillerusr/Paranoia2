@@ -285,7 +285,7 @@ SPRViewer::handleEvent (mxEvent *event)
 			break;
 		}
 		case 'v':
-		case 'ì':
+		case 'Ð¼':
 			bUseWeaponOrigin = !mb->isChecked( IDC_OPTIONS_WEAPONORIGIN );
 			mb->setChecked( IDC_OPTIONS_WEAPONORIGIN, bUseWeaponOrigin );
 			break;

@@ -24,7 +24,7 @@
 #include	"monsters.h"
 #include	"schedule.h"
 #include	"player.h"
-// Wargon: Чтобы работали SpawnBlood и AddMultiDamage. (1.1)
+// Wargon: Р§С‚РѕР±С‹ СЂР°Р±РѕС‚Р°Р»Рё SpawnBlood Рё AddMultiDamage. (1.1)
 #include "weapons.h"
 
 
@@ -61,7 +61,7 @@ public:
 	static const char *pAttackHitSounds[];
 	static const char *pAttackMissSounds[];
 
-	// Wargon: Особые звуки для потолочника и паука.
+	// Wargon: РћСЃРѕР±С‹Рµ Р·РІСѓРєРё РґР»СЏ РїРѕС‚РѕР»РѕС‡РЅРёРєР° Рё РїР°СѓРєР°.
 	static const char *pCeilingAlertSounds[];
 	static const char *pCeilingAttackSounds[];
 	static const char *pCeilingPainSounds[];
@@ -69,7 +69,7 @@ public:
 	static const char *pSpiderAttackSounds[];
 	static const char *pSpiderPainSounds[];
 
-	//Lev: Ещё звуки для толстяка
+	//Lev: Р•С‰С‘ Р·РІСѓРєРё РґР»СЏ С‚РѕР»СЃС‚СЏРєР°
 	static const char *pStrikerAlertSounds[];
 	static const char *pStrikerAttackSounds[];
 	static const char *pStrikerPainSounds[];
@@ -81,7 +81,7 @@ public:
 
 	virtual Vector BodyTarget( const Vector &posSrc ) { return Center() + Vector( 0.0f, 0.0f, RANDOM_FLOAT( 1.0, 20.0f )); }; // position to shoot at
 
-	// Wargon: Отдельные множители повреждений по хитгруппам для monster_zombie. (1.1)
+	// Wargon: РћС‚РґРµР»СЊРЅС‹Рµ РјРЅРѕР¶РёС‚РµР»Рё РїРѕРІСЂРµР¶РґРµРЅРёР№ РїРѕ С…РёС‚РіСЂСѓРїРїР°Рј РґР»СЏ monster_zombie. (1.1)
 	void TraceAttack( entvars_t *pevAttacker, float flDamage, Vector vecDir, TraceResult *ptr, int bitsDamageType );
 
 //	void RunAI( void );
@@ -129,7 +129,7 @@ const char *CZombie::pPainSounds[] =
 	"zombie/zo_pain2.wav",
 };
 
-// Wargon: Особые звуки для потолочника и паука.
+// Wargon: РћСЃРѕР±С‹Рµ Р·РІСѓРєРё РґР»СЏ РїРѕС‚РѕР»РѕС‡РЅРёРєР° Рё РїР°СѓРєР°.
 const char *CZombie::pCeilingAlertSounds[] = 
 {
 	"potolo4nik/zo_alert10.wav",
@@ -237,7 +237,7 @@ int CZombie :: TakeDamage( entvars_t *pevInflictor, entvars_t *pevAttacker, floa
 	return CBaseMonster::TakeDamage( pevInflictor, pevAttacker, flDamage, bitsDamageType );
 }
 
-// Wargon: Отдельные множители повреждений по хитгруппам для monster_zombie. (1.1)
+// Wargon: РћС‚РґРµР»СЊРЅС‹Рµ РјРЅРѕР¶РёС‚РµР»Рё РїРѕРІСЂРµР¶РґРµРЅРёР№ РїРѕ С…РёС‚РіСЂСѓРїРїР°Рј РґР»СЏ monster_zombie. (1.1)
 void CZombie :: TraceAttack( entvars_t *pevAttacker, float flDamage, Vector vecDir, TraceResult *ptr, int bitsDamageType )
 {
 	if (pev->takedamage)
@@ -289,7 +289,7 @@ void CZombie :: TraceAttack( entvars_t *pevAttacker, float flDamage, Vector vecD
 	}
 }
 
-// Wargon: Добавлены особые звуки в Alert, Attack и Pain для потолочника и паука.
+// Wargon: Р”РѕР±Р°РІР»РµРЅС‹ РѕСЃРѕР±С‹Рµ Р·РІСѓРєРё РІ Alert, Attack Рё Pain РґР»СЏ РїРѕС‚РѕР»РѕС‡РЅРёРєР° Рё РїР°СѓРєР°.
 void CZombie :: AlertSound( void )
 {
 	int pitch = 95 + RANDOM_LONG(0,9);
@@ -459,7 +459,7 @@ void CZombie :: Spawn()
 	else
 		SET_MODEL(ENT(pev), "models/zombie.mdl");
 
-	// Wargon: Особые размеры для потолочника и паука.
+	// Wargon: РћСЃРѕР±С‹Рµ СЂР°Р·РјРµСЂС‹ РґР»СЏ РїРѕС‚РѕР»РѕС‡РЅРёРєР° Рё РїР°СѓРєР°.
 	if ( FStrEq( STRING(pev->model), "models/zombie_c.mdl" ) )
 		UTIL_SetSize( pev, Vector(-16, -16, 0), Vector(16, 16, 128) );
 	else if ( FStrEq( STRING(pev->model), "models/spider.mdl" ) )
@@ -485,7 +485,7 @@ void CZombie :: Spawn()
 //=========================================================
 // Precache - precaches all resources this monster needs
 //=========================================================
-void CZombie :: Precache() // Wargon: Особые звуки для потолочника и паука.
+void CZombie :: Precache() // Wargon: РћСЃРѕР±С‹Рµ Р·РІСѓРєРё РґР»СЏ РїРѕС‚РѕР»РѕС‡РЅРёРєР° Рё РїР°СѓРєР°.
 {
 	int i;
 

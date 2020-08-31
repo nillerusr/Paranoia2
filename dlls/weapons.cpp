@@ -167,7 +167,7 @@ void CBasePlayerItem :: FallInit( void )
 	UTIL_SetOrigin( this, pev->origin );
 	UTIL_SetSize( pev, g_vecZero, g_vecZero ); // pointsize until it lands on the ground.
 	
-	// Wargon: Îðóæèå þçàáåëüíî.
+	// Wargon: ÐžÑ€ÑƒÐ¶Ð¸Ðµ ÑŽÐ·Ð°Ð±ÐµÐ»ÑŒÐ½Ð¾.
 	SetUse( &CBasePlayerItem::DefaultUse );
 	m_iItemCaps = CBaseEntity::ObjectCaps() | FCAP_IMPULSE_USE;
 
@@ -212,7 +212,7 @@ void CBasePlayerItem :: Materialize( void )
 
 	UTIL_SetOrigin( this, pev->origin ); // link into world.
 
-	// Wargon: Îðóæèå þçàáåëüíî.
+	// Wargon: ÐžÑ€ÑƒÐ¶Ð¸Ðµ ÑŽÐ·Ð°Ð±ÐµÐ»ÑŒÐ½Ð¾.
 	SetUse( &CBasePlayerItem::DefaultUse );
 	m_iItemCaps = CBaseEntity::ObjectCaps() | FCAP_IMPULSE_USE;
 
@@ -253,7 +253,7 @@ CBaseEntity* CBasePlayerItem :: Respawn( void )
 	{
 		pNewWeapon->pev->effects |= EF_NODRAW;// invisible for now
 
-		// Wargon: Îðóæèå íåþçàáåëüíî.
+		// Wargon: ÐžÑ€ÑƒÐ¶Ð¸Ðµ Ð½ÐµÑŽÐ·Ð°Ð±ÐµÐ»ÑŒÐ½Ð¾.
 		pNewWeapon->SetUse( NULL );
 		m_iItemCaps = CBaseEntity :: ObjectCaps();
 
@@ -1678,7 +1678,7 @@ BOOL CBasePlayerItem :: DefaultSwing( int primary )
 
 		ClearMultiDamage( );
 
-		// Wargon: Èñïðàâëåíî ãèáàíèå íîæåì.
+		// Wargon: Ð˜ÑÐ¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¾ Ð³Ð¸Ð±Ð°Ð½Ð¸Ðµ Ð½Ð¾Ð¶ÐµÐ¼.
 		if( primary ) pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbar, gpGlobals->v_forward, &tr, DMG_CLUB | DMG_NEVERGIB );
 		else pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbarSec, gpGlobals->v_forward, &tr, DMG_CLUB | DMG_NEVERGIB );
 
@@ -2477,7 +2477,7 @@ int CBasePlayerItem :: AddToPlayer( CBasePlayer *pPlayer )
 
 void CBasePlayerItem :: Drop( void )
 {
-	// Wargon: Îðóæèå íåþçàáåëüíî.
+	// Wargon: ÐžÑ€ÑƒÐ¶Ð¸Ðµ Ð½ÐµÑŽÐ·Ð°Ð±ÐµÐ»ÑŒÐ½Ð¾.
 	SetUse( NULL );
 	m_iItemCaps = CBaseEntity :: ObjectCaps();
 
@@ -2488,7 +2488,7 @@ void CBasePlayerItem :: Drop( void )
 
 void CBasePlayerItem :: Kill( void )
 {
-	// Wargon: Îðóæèå íåþçàáåëüíî.
+	// Wargon: ÐžÑ€ÑƒÐ¶Ð¸Ðµ Ð½ÐµÑŽÐ·Ð°Ð±ÐµÐ»ÑŒÐ½Ð¾.
 	SetUse( NULL );
 	m_iItemCaps = CBaseEntity :: ObjectCaps();
 
@@ -3059,7 +3059,7 @@ class CPainkiller : public CBasePlayerAmmo
 		{
 			EMIT_SOUND(ENT(pev), CHAN_ITEM, "items/painkiller_pickup.wav", 1, ATTN_NORM);
 			pOther->pev->weapons |= (1<<WEAPON_PAINKILLER);
-			// Wargon: Âîçìîæíîñòü òàðãåòèòü ýíòèòè ïîäáîðîì ïàèíêèëëåðà.
+			// Wargon: Ð’Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÑŒ Ñ‚Ð°Ñ€Ð³ÐµÑ‚Ð¸Ñ‚ÑŒ ÑÐ½Ñ‚Ð¸Ñ‚Ð¸ Ð¿Ð¾Ð´Ð±Ð¾Ñ€Ð¾Ð¼ Ð¿Ð°Ð¸Ð½ÐºÐ¸Ð»Ð»ÐµÑ€Ð°.
 			SUB_UseTargets( pOther, USE_TOGGLE, 0 );
 		}
 		return bResult;

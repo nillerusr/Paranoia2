@@ -554,17 +554,17 @@ MDLViewer::handleEvent (mxEvent *event)
 			break;
 		}
 		case 'g':
-		case 'ï':
+		case 'Ð¿':
 			g_viewerSettings.showGround = !g_viewerSettings.showGround;
 			if( !g_viewerSettings.showGround )
 				g_viewerSettings.mirror = false;
 			break;
 		case 'h':
-		case 'ð':
+		case 'Ñ€':
 			g_viewerSettings.showHitBoxes = !g_viewerSettings.showHitBoxes;
 			break;
 		case 'o':
-		case 'ù':
+		case 'Ñ‰':
 			g_viewerSettings.showBones = !g_viewerSettings.showBones;
 			break;
 		case '5':
@@ -578,32 +578,32 @@ MDLViewer::handleEvent (mxEvent *event)
 				g_viewerSettings.transparency = 1.0f;
 			break;
 		case 'b':
-		case 'è':
+		case 'Ð¸':
 			g_viewerSettings.showBackground = !g_viewerSettings.showBackground;
 			break;
 		case 's':
-		case 'û':
+		case 'Ñ‹':
 			g_viewerSettings.useStencil = !g_viewerSettings.useStencil;
 			break;
 		case 'm':
-		case 'ü':
+		case 'ÑŒ':
 			g_viewerSettings.mirror = !g_viewerSettings.mirror;
 			if( g_viewerSettings.mirror )
 				g_viewerSettings.showGround = true;
 			break;
 		case 'v':
-		case 'ì':
+		case 'Ð¼':
 			bUseWeaponOrigin = !mb->isChecked( IDC_OPTIONS_WEAPONORIGIN );
 			mb->setChecked( IDC_OPTIONS_WEAPONORIGIN, bUseWeaponOrigin );
 			break;
 		case 'l':
-		case 'ä':
+		case 'Ð´':
 			bUseWeaponLeftHand = !mb->isChecked( IDC_OPTIONS_LEFTHAND );
 			mb->setChecked( IDC_OPTIONS_LEFTHAND, bUseWeaponLeftHand );
 			break;
 
 		case 'w':
-		case 'ö':
+		case 'Ñ†':
 			g_viewerSettings.studio_blendweights = !mb->isChecked( IDC_OPTIONS_BLENDWEIGHTS );
 			mb->setChecked( IDC_OPTIONS_BLENDWEIGHTS, g_viewerSettings.studio_blendweights ? true : false );
 			break;

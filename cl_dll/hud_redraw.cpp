@@ -58,7 +58,7 @@ void CHud::Think(void)
 		m_flDeadTime = gEngfuncs.GetClientTime();
 	}
 
-	// Wargon: Èñïðàâëåíèå áàãà ýôôåêòà grayscale, îñòàâàâøåãîñÿ ïîñëå çàãðóçêè èç ìåðòâîãî ñîñòîÿíèÿ.
+	// Wargon: Ð˜ÑÐ¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð±Ð°Ð³Ð° ÑÑ„Ñ„ÐµÐºÑ‚Ð° grayscale, Ð¾ÑÑ‚Ð°Ð²Ð°Ð²ÑˆÐµÐ³Ð¾ÑÑ Ð¿Ð¾ÑÐ»Ðµ Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ð¸Ð· Ð¼ÐµÑ€Ñ‚Ð²Ð¾Ð³Ð¾ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ñ.
 	if (gHUD.m_Health.m_iHealth > 0)
 	{
 		m_flDeadTime = 0;
@@ -97,7 +97,7 @@ void CHud::Think(void)
 		if( mod < 30 ) mod = 30;
 
 		if( g_iGunMode == 3 || lastFixedFov == 30 )
-			mod *= 2; // õàêàìè õàëôà ïîëíèòñÿ (c)
+			mod *= 2; // Ñ…Ð°ÐºÐ°Ð¼Ð¸ Ñ…Ð°Ð»Ñ„Ð° Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑÑ (c)
 		mod /= 30;
 
 		if( m_flFOV < targetFOV )
@@ -258,7 +258,7 @@ int CHud :: Redraw( float flTime, int intermission )
 	}
 
 	// buz: draw crosshair
-	// Wargon: Ïðèöåë ðèñóåòñÿ òîëüêî åñëè hud_draw = 1.
+	// Wargon: ÐŸÑ€Ð¸Ñ†ÐµÐ» Ñ€Ð¸ÑÑƒÐµÑ‚ÑÑ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ ÐµÑÐ»Ð¸ hud_draw = 1.
 	if(( g_vSpread[0] && g_iGunMode == 1 && m_SpecTank_on == 0 ) && gHUD.m_pCvarDraw->value && cv_crosshair->value )
 	{
 		if( gViewPort && gViewPort->m_pParanoiaText && gViewPort->m_pParanoiaText->isVisible( ))

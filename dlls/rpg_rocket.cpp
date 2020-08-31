@@ -109,7 +109,7 @@ void CLaserSpot::Precache( void )
 
 LINK_ENTITY_TO_CLASS( rpg_rocket, CRpgRocket );
 
-// Wargon: SaveData ïåðåìåùåí èç weapons.cpp.
+// Wargon: SaveData Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰ÐµÐ½ Ð¸Ð· weapons.cpp.
 TYPEDESCRIPTION CRpgRocket :: m_SaveData[] = 
 {
 	DEFINE_FIELD( CRpgRocket, m_flIgniteTime, FIELD_TIME ),
@@ -178,7 +178,7 @@ void CRpgRocket :: Precache( void )
 {
 	PRECACHE_MODEL( "models/rpgrocket.mdl" );
 	m_iTrail = PRECACHE_MODEL("sprites/smoke.spr");
-	m_iFireTrail = PRECACHE_MODEL( "sprites/muz3.spr" ); // Wargon: Ñïðàéò äëÿ îãíåííîãî ñëåäà ó ðàêåò.
+	m_iFireTrail = PRECACHE_MODEL( "sprites/muz3.spr" ); // Wargon: Ð¡Ð¿Ñ€Ð°Ð¹Ñ‚ Ð´Ð»Ñ Ð¾Ð³Ð½ÐµÐ½Ð½Ð¾Ð³Ð¾ ÑÐ»ÐµÐ´Ð° Ñƒ Ñ€Ð°ÐºÐµÑ‚.
 	PRECACHE_SOUND ("weapons/rocket1.wav");
 }
 
@@ -286,7 +286,7 @@ void CRpgRocket :: FollowThink( void )
 		}
 	}
 
-	// Wargon: Íåïîíÿòíî, ïî÷åìó ó ðàêåò íå ðèñóåòñÿ glow-ñïðàéò. Èñïðàâèë ïîëîæåíèå, ñäåëàâ ñâîé îãîíü äëÿ ðàêåòû ÷åðåç ìåññàãó.
+	// Wargon: ÐÐµÐ¿Ð¾Ð½ÑÑ‚Ð½Ð¾, Ð¿Ð¾Ñ‡ÐµÐ¼Ñƒ Ñƒ Ñ€Ð°ÐºÐµÑ‚ Ð½Ðµ Ñ€Ð¸ÑÑƒÐµÑ‚ÑÑ glow-ÑÐ¿Ñ€Ð°Ð¹Ñ‚. Ð˜ÑÐ¿Ñ€Ð°Ð²Ð¸Ð» Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ, ÑÐ´ÐµÐ»Ð°Ð² ÑÐ²Ð¾Ð¹ Ð¾Ð³Ð¾Ð½ÑŒ Ð´Ð»Ñ Ñ€Ð°ÐºÐµÑ‚Ñ‹ Ñ‡ÐµÑ€ÐµÐ· Ð¼ÐµÑÑÐ°Ð³Ñƒ.
 	MESSAGE_BEGIN( MSG_PVS, SVC_TEMPENTITY, pev->origin );
 		WRITE_BYTE( TE_SPRITE );
 		WRITE_COORD( pev->origin.x );

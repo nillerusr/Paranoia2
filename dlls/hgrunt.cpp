@@ -201,7 +201,7 @@ public:
 	virtual void SpeakSentence( void );
 	virtual void SetEyePosition ( void ); // buz
 
-	// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+	// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 	virtual int ObjectCaps( void ) { return CSquadMonster::ObjectCaps() | (m_iDeadAmmo?FCAP_IMPULSE_USE:0); }
 	int m_iDeadAmmo;
 	void EXPORT DeadUse( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value );
@@ -277,7 +277,7 @@ TYPEDESCRIPTION	CHGrunt::m_SaveData[] =
 //  DEFINE_FIELD( CShotgun, m_iBrassShell, FIELD_INTEGER ),
 //  DEFINE_FIELD( CShotgun, m_iShotgunShell, FIELD_INTEGER ),
 	DEFINE_FIELD( CHGrunt, m_iSentence, FIELD_INTEGER ),
-	// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+	// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 	DEFINE_FIELD( CHGrunt, m_iDeadAmmo, FIELD_INTEGER ),
 };
 
@@ -1211,7 +1211,7 @@ void CHGrunt :: Spawn()
 
 	CTalkMonster::g_talkWaitTime = 0;
 
-	// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+	// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 	m_iDeadAmmo = 0;
 
 	MonsterInit();
@@ -1252,7 +1252,7 @@ void CHGrunt :: Precache()
 
 	PRECACHE_SOUND("zombie/claw_miss2.wav");// because we use the basemonster SWIPE animation event
 
-	// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+	// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 	PRECACHE_SOUND("items/9mmclip1.wav");
 
 	// get voice pitch
@@ -2338,7 +2338,7 @@ Schedule_t *CHGrunt :: GetSchedule( void )
 	}
 	switch	( m_MonsterState )
 	{
-	case MONSTERSTATE_IDLE: // buz: перезарядиться, если врага нет и магазин полупуст
+	case MONSTERSTATE_IDLE: // buz: РїРµСЂРµР·Р°СЂСЏРґРёС‚СЊСЃСЏ, РµСЃР»Рё РІСЂР°РіР° РЅРµС‚ Рё РјР°РіР°Р·РёРЅ РїРѕР»СѓРїСѓСЃС‚
 	case MONSTERSTATE_ALERT:
 
 		if (m_cAmmoLoaded < m_cClipSize / 2)
@@ -2893,7 +2893,7 @@ void CHGrunt :: SetEyePosition ( void )
 	}
 }
 
-// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 void CHGrunt :: DeadUse ( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value )
 {
 	if (!pActivator->IsPlayer())
@@ -2912,7 +2912,7 @@ void CHGrunt :: DeadUse ( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYP
 	}
 }
 
-// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 void CHGrunt :: Killed( entvars_t *pevAttacker, int iGib )
 {
 	if (gSkillData.maxDeadEnemyAmmo >= 1 && !ShouldGibMonster(iGib))
@@ -2938,7 +2938,7 @@ public:
 	void HandleAnimEvent( MonsterEvent_t *pEvent );
 	void Shoot ( void );
 	void SetActivity ( Activity NewActivity );
-	// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+	// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 	void EXPORT DeadUse( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value );
 	void Killed( entvars_t *pevAttacker, int iGib );
 };
@@ -2993,7 +2993,7 @@ void CHGruntGlock :: Spawn()
 
 	CTalkMonster::g_talkWaitTime = 0;
 
-	// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+	// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 	m_iDeadAmmo = 0;
 
 	MonsterInit();
@@ -3232,7 +3232,7 @@ void CHGruntGlock :: SetActivity ( Activity NewActivity )
 	}
 }
 
-// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 void CHGruntGlock :: DeadUse ( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value )
 {
 	if (!pActivator->IsPlayer())
@@ -3245,7 +3245,7 @@ void CHGruntGlock :: DeadUse ( CBaseEntity *pActivator, CBaseEntity *pCaller, US
 	}
 }
 
-// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 void CHGruntGlock :: Killed( entvars_t *pevAttacker, int iGib )
 {
 	if (gSkillData.maxDeadEnemyAmmo >= 1 && !ShouldGibMonster(iGib))
@@ -3316,7 +3316,7 @@ public:
 
 	int		m_iNoGasDamage;
 
-	// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+	// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 	void EXPORT DeadUse( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value );
 	void Killed( entvars_t *pevAttacker, int iGib );
 };
@@ -3398,7 +3398,7 @@ void CTerror :: Spawn()
 
 	CTalkMonster::g_talkWaitTime = 0;
 
-	// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+	// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 	m_iDeadAmmo = 0;
 
 	MonsterInit();
@@ -3870,7 +3870,7 @@ Schedule_t *CTerror :: GetSchedule( void )
 	}
 	switch	( m_MonsterState )
 	{
-	case MONSTERSTATE_IDLE: // buz: перезарядиться, если врага нет и магазин полупуст
+	case MONSTERSTATE_IDLE: // buz: РїРµСЂРµР·Р°СЂСЏРґРёС‚СЊСЃСЏ, РµСЃР»Рё РІСЂР°РіР° РЅРµС‚ Рё РјР°РіР°Р·РёРЅ РїРѕР»СѓРїСѓСЃС‚
 	case MONSTERSTATE_ALERT:
 
 		if (m_cAmmoLoaded < m_cClipSize / 2)
@@ -4204,7 +4204,7 @@ void CTerror :: IdleSound( void )
 	}
 }
 
-// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 void CTerror :: DeadUse ( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value )
 {
 	if (!pActivator->IsPlayer())
@@ -4223,7 +4223,7 @@ void CTerror :: DeadUse ( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYP
 	}
 }
 
-// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 void CTerror :: Killed( entvars_t *pevAttacker, int iGib )
 {
 	if (gSkillData.maxDeadEnemyAmmo >= 1 && !ShouldGibMonster(iGib))
@@ -4339,7 +4339,7 @@ void CClone :: Spawn()
 	CTalkMonster::g_talkWaitTime = 0;
 	m_iNoGasDamage = 0;
 
-	// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+	// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 	m_iDeadAmmo = 0;
 
 	MonsterInit();
@@ -4613,7 +4613,7 @@ Schedule_t *CClone :: GetSchedule( void )
 	}
 	switch	( m_MonsterState )
 	{
-	case MONSTERSTATE_IDLE: // buz: перезарядиться, если врага нет и магазин полупуст
+	case MONSTERSTATE_IDLE: // buz: РїРµСЂРµР·Р°СЂСЏРґРёС‚СЊСЃСЏ, РµСЃР»Рё РІСЂР°РіР° РЅРµС‚ Рё РјР°РіР°Р·РёРЅ РїРѕР»СѓРїСѓСЃС‚
 	case MONSTERSTATE_ALERT:
 
 		if (m_cAmmoLoaded < m_cClipSize / 2)
@@ -4913,7 +4913,7 @@ void CCloneHeavy :: Spawn()
 	CTalkMonster::g_talkWaitTime = 0;
 	m_iNoGasDamage = 0;
 
-	// Wargon: Возможность подбирать патроны юзом из мертвых вражин. (1.1)
+	// Wargon: Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґР±РёСЂР°С‚СЊ РїР°С‚СЂРѕРЅС‹ СЋР·РѕРј РёР· РјРµСЂС‚РІС‹С… РІСЂР°Р¶РёРЅ. (1.1)
 	m_iDeadAmmo = 0;
 
 	MonsterInit();

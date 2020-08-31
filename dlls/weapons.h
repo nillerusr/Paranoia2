@@ -67,7 +67,7 @@ public:
 	void EXPORT RocketTouch( CBaseEntity *pOther );
 	static CRpgRocket *CreateRpgRocket( Vector vecOrigin, Vector vecAngles, CBaseEntity *pOwner, CBasePlayerItem *pLauncher );
 
-	int m_iFireTrail; // Wargon: переменная для огненного следа у ракет.
+	int m_iFireTrail; // Wargon: РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РѕРіРЅРµРЅРЅРѕРіРѕ СЃР»РµРґР° Сѓ СЂР°РєРµС‚.
 	int m_iTrail;
 	float m_flIgniteTime;
 	CBasePlayerItem *m_pLauncher;// pointer back to the launcher that fired me. 
@@ -162,10 +162,10 @@ typedef enum
 
 enum
 {
-	SPREAD_LINEAR = 0,	// изменение разброса линейно во времени
-	SPREAD_QUAD,	// по параболе (вначале узкий, потом резко расширяется)
-	SPREAD_CUBE,	// кубическая парабола
-	SPREAD_SQRT,	// наоборот (быстро расширяется и плавно переходит в максимальный)
+	SPREAD_LINEAR = 0,	// РёР·РјРµРЅРµРЅРёРµ СЂР°Р·Р±СЂРѕСЃР° Р»РёРЅРµР№РЅРѕ РІРѕ РІСЂРµРјРµРЅРё
+	SPREAD_QUAD,	// РїРѕ РїР°СЂР°Р±РѕР»Рµ (РІРЅР°С‡Р°Р»Рµ СѓР·РєРёР№, РїРѕС‚РѕРј СЂРµР·РєРѕ СЂР°СЃС€РёСЂСЏРµС‚СЃСЏ)
+	SPREAD_CUBE,	// РєСѓР±РёС‡РµСЃРєР°СЏ РїР°СЂР°Р±РѕР»Р°
+	SPREAD_SQRT,	// РЅР°РѕР±РѕСЂРѕС‚ (Р±С‹СЃС‚СЂРѕ СЂР°СЃС€РёСЂСЏРµС‚СЃСЏ Рё РїР»Р°РІРЅРѕ РїРµСЂРµС…РѕРґРёС‚ РІ РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№)
 };
 
 typedef struct
@@ -296,7 +296,7 @@ public:
 	void Precache( void );
 	void Spawn( void );
 
-	// Wargon: Переменные для юзабельности оружий.
+	// Wargon: РџРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ СЋР·Р°Р±РµР»СЊРЅРѕСЃС‚Рё РѕСЂСѓР¶РёР№.
 	void EXPORT DefaultUse( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value ) { DefaultTouch( pActivator ); }
 	virtual int ObjectCaps( void ) { return m_iItemCaps | FCAP_ACROSS_TRANSITION | FCAP_USE_ONLY; }
 
@@ -580,7 +580,7 @@ public:
 	void Precache( void );
 	void Spawn( void );
 
-	// Wargon: Переменные для юзабельности патронов.
+	// Wargon: РџРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ СЋР·Р°Р±РµР»СЊРЅРѕСЃС‚Рё РїР°С‚СЂРѕРЅРѕРІ.
 	virtual int Save( CSave &save );
 	virtual int Restore( CRestore &restore );
 	static TYPEDESCRIPTION m_SaveData[];

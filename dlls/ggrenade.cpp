@@ -74,7 +74,7 @@ void CGrenade::Explode( TraceResult *pTrace, int bitsDamageType )
 		WRITE_COORD( pev->origin.z -= 18 );
 		if (iContents != CONTENTS_WATER)
 		{
-			WRITE_SHORT( g_sModelIndexNull ); // заглушка...
+			WRITE_SHORT( g_sModelIndexNull ); // Р·Р°РіР»СѓС€РєР°...
 		}
 		else
 		{

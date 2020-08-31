@@ -281,7 +281,7 @@ extern int			UTIL_IsMasterTriggered	(string_t sMaster, CBaseEntity *pActivator);
 extern void			UTIL_BloodStream( const Vector &origin, const Vector &direction, int color, int amount );
 extern void			UTIL_BloodDrips( const Vector &origin, const Vector &direction, int color, int amount );
 extern Vector		UTIL_RandomBloodVector( void );
-extern BOOL	UTIL_TraceCustomDecal( TraceResult *pTrace, const char *name, float angle = 0.0f, int persistent = 0 ); // Wargon: Это должно быть объявлено здесь чтобы можно было рисовать кастомне декали из кода монстриков.
+extern BOOL	UTIL_TraceCustomDecal( TraceResult *pTrace, const char *name, float angle = 0.0f, int persistent = 0 ); // Wargon: Р­С‚Рѕ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РѕР±СЉСЏРІР»РµРЅРѕ Р·РґРµСЃСЊ С‡С‚РѕР±С‹ РјРѕР¶РЅРѕ Р±С‹Р»Рѕ СЂРёСЃРѕРІР°С‚СЊ РєР°СЃС‚РѕРјРЅРµ РґРµРєР°Р»Рё РёР· РєРѕРґР° РјРѕРЅСЃС‚СЂРёРєРѕРІ.
 extern void	UTIL_RestoreCustomDecal( const Vector &vecPos, const Vector &vecNormal, int entityIndex, int modelIndex, const char *name, int flags, float angle );
 extern BOOL	UTIL_StudioDecalTrace( TraceResult *pTrace, const char *name, int flags = 0 );
 extern void	UTIL_RestoreStudioDecal( const Vector &vecEnd, const Vector &vecNormal, int entityIndex, int modelIndex, const char *name, int flags, struct modelstate_s *state, int lightcache, const Vector &scale );

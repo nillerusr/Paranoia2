@@ -39,7 +39,7 @@ public:
 
 	inline float MaxSpeed( void ) { return m_maxSpeed; }
 	
-	// NCL: Åñëè ñòîèò ôëàã Breakable
+	// NCL: Ð•ÑÐ»Ð¸ ÑÑ‚Ð¾Ð¸Ñ‚ Ñ„Ð»Ð°Ð³ Breakable
 	virtual int TakeDamage( entvars_t* pevInflictor, entvars_t* pevAttacker, float flDamage, int bitsDamageType );
 	
 	static	TYPEDESCRIPTION m_SaveData[];
@@ -561,7 +561,7 @@ If the material is "plaster" let's do more movement.
 //	pev->avelocity.z = cos( AngleBetweenVectors( vecDir, rup ) ) * force * 2;//fooz	
 //	pev->avelocity.z = sin( AngleBetweenVectors( vecDir, rup ) ) * force * 2;//fooz
 
-	ALERT( at_console, "X : %3.1f %3.1f° Y: %3.1f %3.1f°\n", pev->avelocity.x, AngleBetweenVectors( vecDir, rup ), pev->avelocity.y, AngleBetweenVectors( vecDir, -rright ) );
+	ALERT( at_console, "X : %3.1f %3.1fÂ° Y: %3.1f %3.1fÂ°\n", pev->avelocity.x, AngleBetweenVectors( vecDir, rup ), pev->avelocity.y, AngleBetweenVectors( vecDir, -rright ) );
 
 	pev->velocity = pev->velocity /*+ gpGlobals->v_up * force * RANDOM_FLOAT( 0, 0.5 )*/ + vecDir * force * RANDOM_FLOAT( 0.5, 1.0 );
 

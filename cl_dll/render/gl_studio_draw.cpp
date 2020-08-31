@@ -646,7 +646,7 @@ StudioInterpolateControllers
 */
 void CStudioModelRenderer :: StudioInterpolateControllers( cl_entity_t *e, float dadt )
 {
-	// buz: õàê, ïîçâîëÿşùèé íå èíòåğïîëèğîâàòü êîíòğîëëåğû äëÿ ñòàöèîíàğíîãî ïóëåìåòà
+	// buz: Ñ…Ğ°Ğº, Ğ¿Ğ¾Ğ·Ğ²Ğ¾Ğ»ÑÑÑ‰Ğ¸Ğ¹ Ğ½Ğµ Ğ¸Ğ½Ñ‚ĞµÑ€Ğ¿Ğ¾Ğ»Ğ¸Ñ€Ğ¾Ğ²Ğ°Ñ‚ÑŒ ĞºĞ¾Ğ½Ñ‚Ñ€Ğ¾Ğ»Ğ»ĞµÑ€Ñ‹ Ğ´Ğ»Ñ ÑÑ‚Ğ°Ñ†Ğ¸Ğ¾Ğ½Ğ°Ñ€Ğ½Ğ¾Ğ³Ğ¾ Ğ¿ÑƒĞ»ĞµĞ¼ĞµÑ‚Ğ°
 	if( RI->currententity->curstate.renderfx == 51 )
 		dadt = 1.0f;
 

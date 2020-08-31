@@ -1649,7 +1649,7 @@ void UTIL_DecalTrace( TraceResult *pTrace, const char *decalName )
 }
 
 // buz
-BOOL UTIL_TraceCustomDecal( TraceResult *pTrace, const char *name, float angle, int persistent ) // Wargon: Значение по умолчанию прописано в util.h.
+BOOL UTIL_TraceCustomDecal( TraceResult *pTrace, const char *name, float angle, int persistent ) // Wargon: Р—РЅР°С‡РµРЅРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РїСЂРѕРїРёСЃР°РЅРѕ РІ util.h.
 {
 	short entityIndex;
 	short modelIndex = 0;

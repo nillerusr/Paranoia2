@@ -1,4 +1,4 @@
-//========= Copyright © 2003, Valve LLC, All rights reserved. ==========
+//========= Copyright Â© 2003, Valve LLC, All rights reserved. ==========
 //
 // Purpose: Hooks and classes for the support of humanoid NPCs with 
 //			groovy facial animation capabilities, aka, "Actors"
