@@ -17,9 +17,8 @@
 //
 
 #include "cvardef.h"
-
-#define EXPORT	_declspec( dllexport )
-#define DLLEXPORT	__declspec( dllexport )
+#include "port.h"
+#include "exportdef.h"
 
 #ifndef TRUE
 #define TRUE 1
@@ -135,14 +134,14 @@ extern "C" void DLLEXPORT HUD_StudioEvent( const struct mstudioevent_s *event, c
 
 #define DECLARE_MESSAGE(y, x) int __MsgFunc_##x(const char *pszName, int iSize, void *pbuf) \
 							{ \
-							return gHUD.##y.MsgFunc_##x(pszName, iSize, pbuf ); \
+							return gHUD.y.MsgFunc_##x(pszName, iSize, pbuf ); \
 							}
 
 
 #define HOOK_COMMAND(x, y) gEngfuncs.pfnAddCommand( x, __CmdFunc_##y );
 #define DECLARE_COMMAND(y, x) void __CmdFunc_##x( void ) \
 							{ \
-								gHUD.##y.UserCmd_##x( ); \
+								gHUD.y.UserCmd_##x( ); \
 							}
 
 #define SPR_Set (*gEngfuncs.pfnSPR_Set)

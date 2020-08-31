@@ -87,6 +87,7 @@ GNU General Public License for more details.
 	typedef unsigned int   ULONG;
 	typedef int			WPARAM;
 	typedef unsigned int    LPARAM;
+	typedef int		BOOL;
 
 	typedef void* HANDLE;
 	typedef void* HMODULE;
