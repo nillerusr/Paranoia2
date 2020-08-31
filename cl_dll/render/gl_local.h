@@ -25,7 +25,7 @@ GNU General Public License for more details.
 #include "gl_frustum.h"
 #include "gl_primitive.h"
 #include "cl_dlight.h"
-#include "features.h"
+#include "enginefeatures.h"
 #include <utlarray.h>
 #include <matrix.h>
 

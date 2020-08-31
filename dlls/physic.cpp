@@ -23,7 +23,7 @@ GNU General Public License for more details.
 #include	"gamerules.h"
 #include	"game.h"
 #include	"com_model.h"
-#include	"features.h"
+#include	"enginefeatures.h"
 #include  "triangleapi.h"
 #include  "render_api.h"
 #include  "pm_shared.h"
