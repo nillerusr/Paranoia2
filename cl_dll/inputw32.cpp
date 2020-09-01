@@ -7,6 +7,8 @@
 
 // in_win.c -- windows 95 mouse and joystick code
 // 02/21/97 JCB Added extended DirectInput code to support external controllers.
+/// TODO: import hlsdk-xash3d input interface
+#if 0
 
 #include "hud.h"
 #include "cl_util.h"
@@ -961,3 +963,5 @@ void IN_Init (void)
 	IN_StartupMouse ();
 	IN_StartupJoystick ();
 }
+
+#endif

@@ -4,6 +4,8 @@
 //
 // $NoKeywords: $
 //=============================================================================
+#if 0
+// TODO: import hlsdk-xash3d input
 
 #include "hud.h"
 #include "cl_util.h"
@@ -619,3 +621,5 @@ void DLLEXPORT CL_CameraOffset( float *ofs )
 {
 	VectorCopy( cam_ofs, ofs );
 }
+
+#endif

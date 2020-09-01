@@ -22,7 +22,7 @@
 #include "in_defs.h"
 #include <string.h>
 #include <mathlib.h>
-
+#include <ctype.h>
 #include "vgui_TeamFortressViewport.h"
 
 

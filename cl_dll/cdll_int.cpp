@@ -21,7 +21,7 @@
 #include "hud.h"
 #include "cl_util.h"
 #include "netadr.h"
-#include "vgui_schememanager.h"
+#include "vgui_SchemeManager.h"
 
 #include "pm_shared.h"
 #include "pm_defs.h"

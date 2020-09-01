@@ -144,7 +144,9 @@ static int R_ComputeCropBounds( const matrix4x4 &lightViewProjection, Vector bou
 	frustum.DisablePlane( FRUSTUM_NEAR );
 	frustum.DisablePlane( FRUSTUM_FAR );
 
-	for( int i = 0; i < prevRI->frame.solid_faces.Count(); i++ )
+	int i;
+
+	for( i = 0; i < prevRI->frame.solid_faces.Count(); i++ )
 	{
 		CSolidEntry *entry = &prevRI->frame.solid_faces[i];
 

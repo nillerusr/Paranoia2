@@ -16,7 +16,7 @@
 // fall over
 #define	ROLL	2 
 
-#define DLLEXPORT __declspec( dllexport )
+#include <exportdef.h>
 
 void V_StartPitchDrift( void );
 void V_StopPitchDrift( void );

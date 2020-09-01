@@ -42,7 +42,9 @@ fast box on planeside test
 */
 int SignbitsForPlane( const Vector &normal )
 {
-	for( int bits = 0, i = 0; i < 3; i++ )
+	int bits, i;
+
+	for( bits = 0, i = 0; i < 3; i++ )
 		if( normal[i] < 0.0f )
 			bits |= 1<<i;
 	return bits;

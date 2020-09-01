@@ -44,7 +44,7 @@
 #include "VGUI_TextImage.h"
 #include "vgui_loadtga.h"
 #include "vgui_helpers.h"
-#include "vgui_mousecode.h"
+#include "VGUI_MouseCode.h"
 
 
 
@@ -97,7 +97,9 @@ int __MsgFunc_ReqState(const char *pszName, int iSize, void *pbuf)
 	return 1;
 }
 
-
+// Q_strupr
+//#include "stringlib.h"
+// TODO: fix stringlib in client
 int g_BannedPlayerPrintCount;
 void ForEachBannedPlayer(char id[16])
 {
@@ -109,7 +111,7 @@ void ForEachBannedPlayer(char id[16])
 		id[8], id[9], id[10], id[11], 
 		id[12], id[13], id[14], id[15]
 		);
-	strupr(str);
+//	Q_strupr(str, str);
 	gEngfuncs.pfnConsolePrint(str);
 }
 

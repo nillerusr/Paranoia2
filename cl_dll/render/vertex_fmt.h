@@ -17,8 +17,11 @@ GNU General Public License for more details.
 #ifndef VERTEX_FMT_H
 #define VERTEX_FMT_H
 
+#ifdef _MSC_VER
 #define no_align	__declspec(align(1))
-
+#else
+#define no_align
+#endif
 // name specific:
 // fisrt letter is model type: B - BrushModel, G - Grass, D - Decal, S - StudioModel
 // next four letters is always equal "vert" for more readability
@@ -48,6 +51,7 @@ typedef struct
 	byte		styles[MAXLIGHTMAPS];	// light styles
 } bvert_v0_gl21_t;
 
+#pragma pack(1)
 // 84 bytes here
 no_align typedef struct
 {
@@ -62,7 +66,7 @@ no_align typedef struct
 	byte		lights0[4];		// packed light numbers
 	byte		lights1[4];		// packed light numbers
 } bvert_v0_gl30_t;
-
+#pragma pack()
 /*
 =============================================================
 
@@ -128,7 +132,7 @@ typedef struct
 	float		normal[3];		// normal
 	float		boneid;			// control bones
 } svert_v0_gl21_t;
-
+#pragma pack(1)
 // 24 bytes
 no_align typedef struct
 {
@@ -137,7 +141,7 @@ no_align typedef struct
 	char		normal[3];		// normal
 	char		boneid;			// control bones
 } svert_v0_gl30_t;
-
+#pragma pack()
 // version 1. have bump, no boneweights, no vertexlight
 // 68 bytes
 typedef struct
@@ -150,6 +154,7 @@ typedef struct
 	float		boneid;			// control bones
 } svert_v1_gl21_t;
 
+#pragma pack(1)
 // 32 bytes
 no_align typedef struct
 {
@@ -160,6 +165,7 @@ no_align typedef struct
 	char		binormal[3];		// binormal
 	char		boneid;			// control bones
 } svert_v1_gl30_t;
+#pragma pack()
 
 // version 2. no bump, single bone, has vertex lighting
 // 56 bytes
@@ -170,6 +176,7 @@ typedef struct
 	float		normal[3];		// normal
 	float		light[MAXLIGHTMAPS];	// packed color
 } svert_v2_gl21_t;
+#pragma pack(1)
 
 // 40 bytes
 no_align typedef struct
@@ -179,6 +186,7 @@ no_align typedef struct
 	char		normal[3];		// normal
 	float		light[MAXLIGHTMAPS];	// packed color
 } svert_v2_gl30_t;
+#pragma pack()
 
 // version 3. have bump, single bone, has vertex lighting
 // 96 bytes
@@ -192,6 +200,7 @@ typedef struct
 	float		tangent[3];		// tangent
 	float		binormal[3];		// binormal
 } svert_v3_gl21_t;
+#pragma pack(1)
 
 // 64 bytes
 no_align typedef struct
@@ -204,6 +213,7 @@ no_align typedef struct
 	char		tangent[3];		// tangent
 	char		binormal[3];		// binormal
 } svert_v3_gl30_t;
+#pragma pack()
 
 // version 4. no bump, have boneweights, no vertexlight
 // 72 bytes
@@ -216,6 +226,8 @@ typedef struct
 	float		weight[4];		// boneweights
 } svert_v4_gl21_t;
 
+#pragma pack(1)
+
 // 32 bytes
 no_align typedef struct
 {
@@ -225,6 +237,7 @@ no_align typedef struct
 	char		boneid[4];		// control bones
 	byte		weight[4];		// boneweights
 } svert_v4_gl30_t;
+#pragma pack()
 
 // version 5. have bump, have boneweights, no vertexlight
 // 96 bytes
@@ -239,6 +252,7 @@ typedef struct
 	float		weight[4];		// boneweights
 } svert_v5_gl21_t;
 
+#pragma pack(1)
 // 40 bytes
 no_align typedef struct
 {
@@ -250,6 +264,7 @@ no_align typedef struct
 	char		boneid[4];		// control bones
 	byte		weight[4];		// boneweights
 } svert_v5_gl30_t;
+#pragma pack()
 
 // version 6. no bump, single bone, has lightmaps
 // 76 bytes
@@ -263,6 +278,8 @@ typedef struct
 	byte		styles[MAXLIGHTMAPS];	// light styles
 } svert_v6_gl21_t;
 
+#pragma pack(1)
+
 // 60 bytes
 no_align typedef struct
 {
@@ -273,6 +290,7 @@ no_align typedef struct
 	char		normal[3];		// normal
 	byte		styles[MAXLIGHTMAPS];	// light styles
 } svert_v6_gl30_t;
+#pragma pack()
 
 // version 7. have bump, single bone, has lightmaps
 // 100 bytes
@@ -288,6 +306,7 @@ typedef struct
 	byte		styles[MAXLIGHTMAPS];	// light styles
 } svert_v7_gl21_t;
 
+#pragma pack(1)
 // 68 bytes
 no_align typedef struct
 {
@@ -300,6 +319,7 @@ no_align typedef struct
 	char		binormal[3];		// binormal
 	byte		styles[MAXLIGHTMAPS];	// light styles
 } svert_v7_gl30_t;
+#pragma pack()
 
 // version 8. includes all posible combination, slowest
 // 164 bytes here
@@ -319,6 +339,8 @@ typedef struct
 	byte		styles[MAXLIGHTMAPS];	// light styles
 } svert_v8_gl21_t;
 
+#pragma pack(1)
+
 // 108 bytes here
 no_align typedef struct
 {
@@ -335,5 +357,6 @@ no_align typedef struct
 	float		deluxe[MAXLIGHTMAPS];	// packed lightdir
 	byte		styles[MAXLIGHTMAPS];	// light styles
 } svert_v8_gl30_t;
+#pragma pack()
 
 #endif//VERTEX_FMT_H

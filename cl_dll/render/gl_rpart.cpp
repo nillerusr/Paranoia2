@@ -509,7 +509,8 @@ bool CQuakePartSystem :: ParseRandomVector( char *&pfile, RandomRange out[3] )
 {
 	char token[256];
 
-	for( int i = 0; i < 3 && pfile != NULL; i++ )
+	int i;
+	for( i = 0; i < 3 && pfile != NULL; i++ )
 	{
 		pfile = COM_ParseLine( pfile, token );
 		out[i] = RandomRange( token );
@@ -904,7 +905,8 @@ void CQuakePartSystem :: ExplosionParticles( const Vector &pos )
 
 	flags = (FPART_STRETCH|FPART_BOUNCE|FPART_FRICTION);
 
-	for( int i = 0; i < 384; i++ )
+	int i;
+	for( i = 0; i < 384; i++ )
 	{
 		src.m_vecOrigin.x = pos.x + RANDOM_LONG( -16, 16 );
 		src.m_vecOrigin.y = pos.y + RANDOM_LONG( -16, 16 );
@@ -1128,7 +1130,8 @@ void CQuakePartSystem :: BulletParticles( const Vector &org, const Vector &dir )
 	// sparks
 	int flags = (FPART_STRETCH|FPART_BOUNCE|FPART_FRICTION|FPART_ADDITIVE);
 
-	for( int i = 0; i < count; i++ )
+	int i;
+	for( i = 0; i < count; i++ )
 	{
 		src.m_vecOrigin.x = org[0] + dir[0] * 2 + RANDOM_FLOAT( -1, 1 );
 		src.m_vecOrigin.y = org[1] + dir[1] * 2 + RANDOM_FLOAT( -1, 1 );

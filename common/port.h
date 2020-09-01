@@ -156,4 +156,8 @@ GNU General Public License for more details.
 #include <SDL.h>
 #endif
 
+#ifndef MAX_PATH
+#define MAX_PATH PATH_MAX
+#endif
+
 #endif // PORT_H

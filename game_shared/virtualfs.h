@@ -6,7 +6,7 @@
 #define VIRTUALFS_H
 
 #include <stdio.h>
-
+#include <stdarg.h>
 #define FS_MEM_BLOCK	65535
 #define FS_MSG_BLOCK	8192
 
@@ -169,7 +169,7 @@ _forceinline size_t CVirtualFS :: IPrint( const char *message )
 	return Insert( message, Q_strlen( message ));
 }
 
-_forceinline size_t CVirtualFS :: Printf( const char *fmt, ... )
+size_t CVirtualFS :: Printf( const char *fmt, ... )
 {
 	size_t result;
 	va_list args;
@@ -181,7 +181,7 @@ _forceinline size_t CVirtualFS :: Printf( const char *fmt, ... )
 	return result;
 }
 
-_forceinline size_t CVirtualFS :: IPrintf( const char *fmt, ... )
+size_t CVirtualFS :: IPrintf( const char *fmt, ... )
 {
 	size_t result;
 	va_list args;

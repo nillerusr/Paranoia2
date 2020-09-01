@@ -14,7 +14,7 @@
 ****/
 #ifndef EXTDLL_H
 #define EXTDLL_H
-
+#include "port.h"
 
 //
 // Global header file for extension DLLs
@@ -42,7 +42,7 @@
 #else // _WIN32
 #define FALSE 0
 #define TRUE (!FALSE)
-typedef unsigned long ULONG;
+//typedef unsigned long ULONG;
 typedef unsigned char BYTE;
 typedef int BOOL;
 #define MAX_PATH PATH_MAX
@@ -53,7 +53,7 @@ typedef int BOOL;
 #endif
 #ifndef max
 #define max(a,b)  (((a) > (b)) ? (a) : (b))
-#define _vsnprintf(a,b,c,d) vsnprintf(a,b,c,d)
+//#define _vsnprintf(a,b,c,d) vsnprintf(a,b,c,d)
 #endif
 #endif //_WIN32
 
