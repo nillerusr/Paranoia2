@@ -179,6 +179,8 @@ def configure(conf):
 		'-Werror=bool-compare',
 		'-Werror=bool-operation',
 		'-Wstrict-aliasing',
+		'-Wno-conversion-null',
+		'-Wno-write-strings'
 	]
 
 	c_compiler_optional_flags = [

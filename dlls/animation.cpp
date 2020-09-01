@@ -550,7 +550,8 @@ float SetController( void *pmodel, byte *controller, int iController, float flVa
 	mstudiobonecontroller_t *pbonecontroller = (mstudiobonecontroller_t *)((byte *)pstudiohdr + pstudiohdr->bonecontrollerindex);
 
 	// find first controller that matches the index
-	for( int i = 0; i < pstudiohdr->numbonecontrollers; i++, pbonecontroller++ )
+	int i;
+	for( i = 0; i < pstudiohdr->numbonecontrollers; i++, pbonecontroller++ )
 	{
 		if( pbonecontroller->index == iController )
 			break;
@@ -603,7 +604,8 @@ float GetControllerBound2( void *pmodel, int iController )
 	mstudiobonecontroller_t *pbonecontroller = (mstudiobonecontroller_t *)((byte *)pstudiohdr + pstudiohdr->bonecontrollerindex);
 
 	// find first controller that matches the index
-	for( int i = 0; i < pstudiohdr->numbonecontrollers; i++, pbonecontroller++ )
+	int i;
+	for( i = 0; i < pstudiohdr->numbonecontrollers; i++, pbonecontroller++ )
 	{
 		if( pbonecontroller->index == iController )
 			break;

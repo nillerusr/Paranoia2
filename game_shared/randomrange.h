@@ -25,12 +25,14 @@ public:
 	RandomRange() { m_flMin = m_flMax = 0; m_bDefined = false; }
 	RandomRange( float fValue ) { m_flMin = m_flMax = fValue; m_bDefined = true; }
 	RandomRange( float fMin, float fMax) { m_flMin = fMin; m_flMax = fMax; m_bDefined = true; }
-	RandomRange( char *szToken )
+	RandomRange( const char *szToken )
 	{
+		char *mutableToken = new char[Q_strlen(szToken)];
+		strcpy(mutableToken, szToken);
 		char *cOneDot = NULL;
 		m_bDefined = true;
 	
-		for( char *c = szToken; *c; c++ )
+		for( char *c = mutableToken; *c; c++ )
 		{
 			if( *c == '.' )
 			{
@@ -48,6 +50,8 @@ public:
 			}
 			else cOneDot = NULL;
 		}
+		
+		delete[] mutableToken;
 
 		// no range, just record the number
 		m_flMax = m_flMin = Q_atof( szToken );

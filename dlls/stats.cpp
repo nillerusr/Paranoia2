@@ -108,7 +108,7 @@ void UpdateStats( CBasePlayer *pPlayer )
 	float ammo = 0;
 	for (i = 1; i < MAX_AMMO_SLOTS; i++)
 	{
-		ammo += ammoCount[i] * AmmoDamage( CBasePlayerItem::AmmoInfoArray[i].pszName );
+		ammo += ammoCount[i] * AmmoDamage( CBasePlayerAmmo::AmmoInfoArray[i].pszName );
 	}
 
 	float health = pPlayer->pev->health + pPlayer->pev->armorvalue * 2;	// Armor is 2X health

@@ -132,7 +132,7 @@ void CPropExplosion :: Spawn( void )
 	pev->nextthink = gpGlobals->time + 0.1;
 
 //	SetTouch( PropTouch ); //maybe later
-	SetThink( PropThink );
+	SetThink( &CPropExplosion::PropThink );
 
 	//If not defined, add standart value
 	if(!m_startHealth )

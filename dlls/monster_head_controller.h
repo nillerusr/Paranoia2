@@ -55,7 +55,7 @@ public:
 	{
 		pev->effects &= ~EF_NODRAW;
 
-		SetThink( PVSThink );
+		SetThink( &CFlashlight::PVSThink );
 		SetNextThink( 0.1f );
 	}			
 

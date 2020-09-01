@@ -392,7 +392,7 @@ void CBaseDoor::Spawn( )
 		SetTouch ( NULL );
 	}
 	else // touchable button
-		SetTouch( DoorTouch );
+		SetTouch( &CBaseDoor::DoorTouch );
 }
 //END
  
@@ -965,7 +965,7 @@ void CBaseDoor::Blocked( CBaseEntity *pOther )
 			if ( !pTarget )
 				break;
 
-			if ( VARS( pTarget->pev ) != pev && FClassnameIs ( pTarget->pev, "func_door" ) ||
+			if ( ( VARS( pTarget->pev ) != pev && FClassnameIs ( pTarget->pev, "func_door" )) ||
 						FClassnameIs ( pTarget->pev, "func_door_rotating" ) )
 			{
 				pDoor = GetClassPtr( (CBaseDoor *) VARS(pTarget->pev) );

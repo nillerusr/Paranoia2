@@ -323,9 +323,11 @@ void CEnvState::Think( void )
 		{
 			ALERT(at_debug,"DEBUG: env_state \"%s\" turned itself off",STRING(pev->targetname));
 			if (pev->target)
+			{
 				ALERT(at_debug,": firing %s",STRING(pev->target));
 				if (pev->noise2)
 					ALERT(at_debug," and %s",STRING(pev->noise2));
+			}
 			else if (pev->noise2)
 				ALERT(at_debug,": firing %s",STRING(pev->noise2));
 			ALERT(at_debug,".\n");

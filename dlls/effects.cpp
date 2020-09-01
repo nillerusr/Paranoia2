@@ -3939,7 +3939,7 @@ void CEnvDLight::Use( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE us
 	{
 		if (pev->spawnflags & SF_DLIGHT_ONLYONCE)
 		{
-			SetThink( SUB_Remove );
+			SetThink( &CEnvDLight::SUB_Remove );
 			SetNextThink( 0 );
 		}
 	}
@@ -3973,7 +3973,7 @@ void CEnvDLight::Think( void )
 
 	if (pev->spawnflags & SF_DLIGHT_ONLYONCE)
 	{
-		SetThink( SUB_Remove );
+		SetThink( &CEnvDLight::SUB_Remove );
 		SetNextThink( 0 );
 	}
 }
@@ -4680,7 +4680,8 @@ public:
 		if( pev->skin <= 0 || pev->skin > 6 )
 		{
 			// try all directions
-			for( int i = 0; i < 6; i++ )
+			int i;
+			for( i = 0; i < 6; i++ )
 				if( PasteDecal( i )) break;
 			if( i == 6 ) ALERT( at_warning, "failed to place decal %s\n", STRING( pev->netname ));
 		}
@@ -4871,12 +4872,12 @@ public:
 		}
 		else if( pev->sequence )
 		{
-			SetThink( CineThink );
+			SetThink( &CDynamicLight::CineThink );
 			SetNextThink( 0.1f );
 		}
 		else if( pev->scale )
 		{
-			SetThink( PVSThink );
+			SetThink( &CDynamicLight::PVSThink );
 			SetNextThink( 0.1f );
 		}
 	}
@@ -4924,12 +4925,12 @@ public:
 		}
 		else if( pev->sequence )
 		{
-			SetThink( CineThink );
+			SetThink( &CDynamicLight::CineThink );
 			SetNextThink( 0.1f );
 		}
 		else if( pev->scale )
 		{
-			SetThink( PVSThink );
+			SetThink( &CDynamicLight::PVSThink );
 			SetNextThink( 0.1f );
 		}
 	}			
@@ -5034,7 +5035,7 @@ void CFuncScreenMovie :: Spawn( void )
 	// enable monitor
 	if( FBitSet( pev->spawnflags, SF_SCREENMOVIE_START_ON ))
 	{
-		SetThink( SUB_CallUseToggle );
+		SetThink( &CFuncScreenMovie::SUB_CallUseToggle );
 		SetNextThink( 0.1 );
 	}
 }
@@ -5047,7 +5048,7 @@ void CFuncScreenMovie :: Use( CBaseEntity *pActivator, CBaseEntity *pCaller, USE
 		return;
 	}
 
-	SetThink( CineThink );
+	SetThink( &CFuncScreenMovie::CineThink );
 
 	if( ShouldToggle( useType ))
 	{

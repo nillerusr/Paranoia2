@@ -2754,7 +2754,7 @@ void CBaseMonster :: UpdateYaw( int yawSpeed )
 {
 	float	ideal, current, newYaw;
 	
-	if( yawSpeed = -1 )
+	if( yawSpeed == -1 )
 		yawSpeed = pev->yaw_speed;
 		
 	// NOTE: GetIdealYaw() will never exactly be reached because UTIL_AngleMod

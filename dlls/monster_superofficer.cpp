@@ -112,7 +112,7 @@ void COfficerBlood::Shoot( entvars_t *pevOwner, Vector vecStart, Vector vecVeloc
 	pBlood->pev->gravity = 1000;
 	pBlood->pev->owner = ENT(pevOwner);
 
-	pBlood->SetThink ( Animate );
+	pBlood->SetThink ( &COfficerBlood::Animate );
 	pBlood->pev->nextthink = gpGlobals->time + 0.1;
 }
 
@@ -162,7 +162,7 @@ void COfficerBlood :: Touch ( CBaseEntity *pOther )
 		pOther->TakeDamage ( pev, pev, gSkillData.superofficerDmgBlood, DMG_GENERIC );
 	}
 
-	SetThink ( SUB_Remove );
+	SetThink ( &COfficerBlood::SUB_Remove );
 	pev->nextthink = gpGlobals->time;
 }
 

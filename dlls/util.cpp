@@ -431,7 +431,7 @@ Vector UTIL_YawToVector( float yaw )
 	
 //LRC - pass in a normalised axis vector and a number of degrees, and this returns the corresponding
 // angles value for an entity.
-inline Vector UTIL_AxisRotationToAngles( const Vector &vecAxis, float flDegs )
+Vector UTIL_AxisRotationToAngles( const Vector &vecAxis, float flDegs )
 {
 	Vector vecTemp = UTIL_AxisRotationToVec( vecAxis, flDegs );
 	float rgflVecOut[3];
@@ -2601,7 +2601,7 @@ void CSave :: WritePositionVector( const char *pname, const float *value, int co
 }
 
 
-void CSave :: WriteFunction( const char* cname, const char *pname, const int *data, int count )
+void CSave :: WriteFunction( const char* cname, const char *pname, void **data, int count )
 {
 	const char *functionName;
 
@@ -2774,7 +2774,7 @@ int CSave :: WriteFields( const char *cname, const char *pname, void *pBaseData,
 		break;
 
 		case FIELD_FUNCTION:
-			WriteFunction( cname, pTest->fieldName, (int *)(char *)pOutputData, pTest->fieldSize );
+			WriteFunction( cname, pTest->fieldName, (void **)pOutputData, pTest->fieldSize );
 		break;
 		default:
 			ALERT( at_error, "Bad field type\n" );
@@ -2995,12 +2995,11 @@ int CRestore::ReadField( void *pBaseData, TYPEDESCRIPTION *pFields, int fieldCou
 						*((int *)pOutputData) = *( int *)pInputData;
 					break;
 					case FIELD_FUNCTION:
-						if ( strlen( (char *)pInputData ) == 0 )
-							*((int *)pOutputData) = 0;
+						if( ( (char *)pInputData )[0] == '\0' )
+							*( (void**)pOutputData ) = 0;
 						else
-							*((int *)pOutputData) = FUNCTION_FROM_NAME( (char *)pInputData );
-					break;
-
+							*( (void**)pOutputData ) = (void*)FUNCTION_FROM_NAME( (char *)pInputData );
+						break;
 					default:
 						ALERT( at_error, "Bad field type\n" );
 					}

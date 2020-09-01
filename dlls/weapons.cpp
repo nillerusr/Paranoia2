@@ -429,8 +429,8 @@ void CBasePlayerItem :: Spawn( void )
 	UTIL_SetSize( pev, g_vecZero, g_vecZero ); // pointsize until it lands on the ground.
 
 	if( !FBitSet( ObjectCaps(), FCAP_USE_ONLY ) || FBitSet( pev->spawnflags, SF_NORESPAWN ))	
-		SetTouch( DefaultTouch );
-	SetThink( FallThink );
+		SetTouch( &CBasePlayerItem::DefaultTouch );
+	SetThink( &CBasePlayerItem::FallThink );
 
 	SET_MODEL( edict(), STRING( iWorldModel( )));
 
@@ -1514,7 +1514,7 @@ BOOL CBasePlayerItem :: DefaultHolster( Activity sequence, bool force )
 		ClearBits( m_pPlayer->pev->weapons, BIT( m_iId ));
 		m_pPlayer->pev->viewmodel = iStringNull;
 		m_pPlayer->pev->weaponmodel = iStringNull;
-		SetThink( DestroyItem );
+		SetThink( &CBasePlayerItem::DestroyItem );
 		SetNextThink( 0.5 );
 	}
 

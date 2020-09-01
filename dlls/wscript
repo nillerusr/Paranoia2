@@ -23,7 +23,15 @@ def configure(conf):
 def build(bld):
 	source = bld.path.parent.ant_glob([
 		'pm_shared/*.cpp',
-		'game_shared/*.cpp'
+		'game_shared/bone_setup.cpp',
+		'game_shared/common.cpp',
+		'game_shared/ikcontext.cpp',
+		'game_shared/material.cpp',
+		'game_shared/mathlib.cpp',
+		'game_shared/matrix.cpp',
+		'game_shared/stringlib.cpp',
+		'game_shared/virtualfs.cpp',
+		'game_shared/voice_gamemgr.cpp',
 	])
 	source += bld.path.ant_glob([
 		'*.cpp'
