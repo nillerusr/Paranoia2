@@ -3,12 +3,14 @@
 //		         stringlib.cpp - safety string routines 
 //=======================================================================
 
-#define NOMINMAX
-#include <windows.h>
+//#define NOMINMAX
+//#include <windows.h>
 #include <stdio.h>
+#include <stdarg.h>
+#include <string.h>
 #include <mathlib.h>
-#include <stringlib.h>
-
+#include "stringlib.h"
+#include <ctype.h>
 #pragma warning(disable : 4244)	// MIPS
 
 //============

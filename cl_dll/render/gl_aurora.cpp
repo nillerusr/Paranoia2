@@ -1049,7 +1049,7 @@ bool CParticleSystem :: UpdateParticle( CParticle *part, float frametime )
 	return true;
 }
 
-void CParticleSystem :: DrawParticle( CParticle *part, vec3_t &right, vec3_t &up )
+void CParticleSystem :: DrawParticle( CParticle *part, const vec3_t &right, const vec3_t &up )
 {
 	float fSize = part->m_fSize;
 
@@ -1083,10 +1083,11 @@ void CParticleSystem :: DrawParticle( CParticle *part, vec3_t &right, vec3_t &up
 		{
 			if( pDraw->pType->m_iDrawCond == CONTENTS_SPOTLIGHT )
 			{
+				int i;
 				if( !m_fHasProjectionLighting )
 					continue;	// fast reject
 
-				for( int i = 0; i < MAX_DLIGHTS; i++ )
+				for( i = 0; i < MAX_DLIGHTS; i++ )
 				{
 					CDynLight *pl = &tr.dlights[i];
 

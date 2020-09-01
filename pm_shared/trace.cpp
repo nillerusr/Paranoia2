@@ -13,8 +13,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#define WIN32_LEAN_AND_MEAN
-#include "windows.h"
+//#include "windows.h"
 #include <alert.h>
 #include "vector.h"
 #include "matrix.h"

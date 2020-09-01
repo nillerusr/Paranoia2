@@ -171,7 +171,7 @@ public:
 	CUtlBlockVector( int growSize = 0, int initSize = 0 )
 		: CUtlArray< T, CUtlBlockMemory< T, int > >( growSize, initSize ) {}
 };
-
+#if 0
 //-----------------------------------------------------------------------------
 // The CUtlArrayFixed class:
 // A array class with a fixed allocation scheme
@@ -189,7 +189,7 @@ public:
 	CUtlArrayMT( typename BaseClass::ElemType_t* pMemory, int numElements ) : BaseClass( pMemory, numElements ) {}
 };
 
-
+#endif
 //-----------------------------------------------------------------------------
 // The CUtlArrayFixed class:
 // A array class with a fixed allocation scheme

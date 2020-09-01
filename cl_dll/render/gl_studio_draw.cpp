@@ -1363,7 +1363,9 @@ void CStudioModelRenderer :: StudioMergeBones( matrix3x4 &transform, matrix3x4 b
 
 	for( int i = 0; i < m_pStudioHeader->numbones; i++ ) 
 	{
-		for( int j = 0; j < m_pParentHeader->numbones; j++ )
+		int j;
+
+		for( j = 0; j < m_pParentHeader->numbones; j++ )
 		{
 			if( !Q_stricmp( pchildbones[i].name, pparentbones[j].name ))
 			{
@@ -1697,7 +1699,7 @@ void CStudioModelRenderer :: StudioStaticLight( cl_entity_t *ent, mstudiolight_t
 		m_pModelInstance->light_update = false;
 
 		// init state if was not in frustum
-		if( abs( m_pModelInstance->cached_frame - tr.realframecount ) > 2 )
+		if( Q_abs( m_pModelInstance->cached_frame - tr.realframecount ) > 2 )
 			m_pModelInstance->oldlight = m_pModelInstance->newlight;
 	}
 
@@ -2849,7 +2851,9 @@ void CStudioModelRenderer :: RenderDeferredStudioList( void )
 	RI->currentmodel = NULL;
 	m_pCurrentMaterial = NULL;
 
-	for( int i = 0; i < RI->frame.solid_meshes.Count(); i++ )
+	int i;
+
+	for( i = 0; i < RI->frame.solid_meshes.Count(); i++ )
 	{
 		CSolidEntry *entry = &RI->frame.solid_meshes[i];
 
@@ -3731,7 +3735,9 @@ void CStudioModelRenderer :: RenderSolidStudioList( void )
 	RI->currentmodel = NULL;
 	m_pCurrentMaterial = NULL;
 
-	for( int i = 0; i < RI->frame.solid_meshes.Count(); i++ )
+	int i;
+
+	for( i = 0; i < RI->frame.solid_meshes.Count(); i++ )
 	{
 		CSolidEntry *entry = &RI->frame.solid_meshes[i];
 

@@ -4,7 +4,7 @@
 //=======================================================================
 #ifndef VECTOR_H
 #define VECTOR_H
-
+#include <port.h>
 #include <math.h>
 #include <float.h>
 #include <stdlib.h>
@@ -31,15 +31,16 @@
 #define vec2_t		Vector2D
 #define vec3_t		Vector
 #define vec4_t		Vector4D
-
+#ifdef _MSC_VER
 #pragma warning( disable : 4244 )	// disable 'possible loss of data converting float to int' warning message
 #pragma warning( disable : 4305 )	// disable 'truncation from 'const double' to 'float' warning message
-
+#endif
 class NxVec3;
 class Radian;
 
 inline void SinCos( float angle, float *sine, float *cosine ) 
 {
+#if defined _MSC_VER && defined _M_I386
 	__asm
 	{
 		push	ecx
@@ -51,6 +52,10 @@ inline void SinCos( float angle, float *sine, float *cosine )
 		fstp	dword ptr [ecx]
 		pop	ecx
 	}
+#else
+	*sine = sin(angle);
+	*cosine = cos(angle);
+#endif
 }
 
 inline float Q_rsqrt( float number )
@@ -151,9 +156,9 @@ class NxVec3;
 //=========================================================
 // 3D Vector
 //=========================================================
-class Vector	// same data-layout as engine's vec3_t,
+struct Vector	// same data-layout as engine's vec3_t,
 {		// which is a float[3]
-public:
+//public:
 	// Construction/destruction
 	inline Vector(void)				{ }
 	inline Vector(float X, float Y, float Z)	{ x = X; y = Y; z = Z;                     }

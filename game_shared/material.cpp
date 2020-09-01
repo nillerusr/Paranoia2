@@ -250,8 +250,9 @@ void COM_InitMatdef( void )
 				{
 					if( !Q_strlen( token )) break; // end of line
 
+					int i;
 					// find the free sound slot
-					for( int i = 0; mat->impact_parts[i] != NULL && i < MAX_MAT_SOUNDS; i++ );
+					for( i = 0; mat->impact_parts[i] != NULL && i < MAX_MAT_SOUNDS; i++ );
 
 					if( i < MAX_MAT_SOUNDS )
 					{
@@ -265,8 +266,9 @@ void COM_InitMatdef( void )
 				{
 					if( !Q_strlen( token )) break; // end of line
 
+					int i;
 					// find the free sound slot
-					for( int i = 0; mat->impact_sounds[i] != NULL && i < MAX_MAT_SOUNDS; i++ );
+					for( i = 0; mat->impact_sounds[i] != NULL && i < MAX_MAT_SOUNDS; i++ );
 
 					if( i < MAX_MAT_SOUNDS )
 					{
@@ -280,8 +282,9 @@ void COM_InitMatdef( void )
 				{
 					if( !Q_strlen( token )) break; // end of line
 
+					int i;
 					// find the free sound slot
-					for( int i = 0; mat->step_sounds[i] != NULL && i < MAX_MAT_SOUNDS; i++ );
+					for( i = 0; mat->step_sounds[i] != NULL && i < MAX_MAT_SOUNDS; i++ );
 
 					if( i < MAX_MAT_SOUNDS )
 					{

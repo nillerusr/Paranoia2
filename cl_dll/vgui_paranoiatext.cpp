@@ -6,7 +6,7 @@
 #include "VGUI_TextImage.h"
 #include "../engine/keydefs.h"
 #include "triangleapi.h"
-#include "../game_shared/vgui_LoadTGA.h"
+#include "../game_shared/vgui_loadtga.h"
 #include "r_studioint.h"
 #include "com_model.h"
 #include "stringlib.h"

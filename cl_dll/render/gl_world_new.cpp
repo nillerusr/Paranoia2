@@ -304,9 +304,10 @@ void GL_LoadAndRebuildCubemaps( int refParams )
 	// now all the cubemaps are recreated, so we can starts to upload them
 	if( world->loading_cubemaps )
 	{
+		int i;
 		Mod_LoadCubemap( &world->defaultCubemap );
 
-		for( int i = 0; i < world->num_cubemaps; i++ )
+		for( i = 0; i < world->num_cubemaps; i++ )
 		{
 			mcubemap_t *cm = &world->cubemaps[i];
 			Vector vecStart, vecEnd;

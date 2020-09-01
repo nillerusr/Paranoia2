@@ -16,8 +16,9 @@ GNU General Public License for more details.
 #ifndef GL_EXPORT_H
 #define GL_EXPORT_H
 
-#include <windows.h>
-
+// not needed since we have GL_GetProcAddress in RenderAPI
+//#include <windows.h>
+#include <stdarg.h>
 #ifndef APIENTRY
 #define APIENTRY
 #endif
@@ -1350,7 +1351,7 @@ EXTERN void ( APIENTRY *pglGetFinalCombinerInputParameterfvNV )( GLenum, GLenum,
 EXTERN void ( APIENTRY *pglGetFinalCombinerInputParameterivNV )( GLenum, GLenum, GLint * );
 EXTERN void ( APIENTRY *pglGenerateMipmap )( GLenum target );
 EXTERN void ( APIENTRY *pglDrawBuffersARB)( GLsizei n, const GLenum *bufs );
-EXTERN PROC ( WINAPI *pwglGetProcAddress)( const char * );
+//EXTERN PROC ( WINAPI *pwglGetProcAddress)( const char * );
 
 EXTERN void ( APIENTRY *pglBindVertexArray )( GLuint array );
 EXTERN void ( APIENTRY *pglDeleteVertexArrays )( GLsizei n, const GLuint *arrays );

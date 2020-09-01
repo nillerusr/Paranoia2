@@ -20,7 +20,7 @@ cvar_t *scroll_speed;
 cvar_t *fade_speed;
 
 
-Font* FontFromMessage(const char* &ptext)
+Font* FontFromMessage(char* &ptext)
 {
 	char fontname[64] = "Default Text";
 	if (ptext != NULL && ptext[0] != 0)
@@ -154,7 +154,7 @@ void CSubtitle::AddMessage( client_textmessage_t *msg )
 //	SchemeHandle_t hTextScheme = pSchemes->getSchemeHandle( "Default Text" );
 //	Font *pFont = pSchemes->getFont( hTextScheme );
 
-	const char *pText = msg->pMessage;
+	char *pText = (char*)msg->pMessage;
 	client_textmessage_t *postMsg = NULL;
 	if (pText[0] == '$')
 	{
@@ -244,7 +244,8 @@ void CSubtitle::paintBackground()
 
 			// find oldest child to start fading int
 			float mintime = 99999;
-			for (int i = 0; i < m_pLayer->getChildCount(); i++)
+			int i;
+			for (i = 0; i < m_pLayer->getChildCount(); i++)
 			{
 				CSubtitleTextPanel *chld = (CSubtitleTextPanel*)m_pLayer->getChild(i);
 				if (chld->isVisible() && chld->m_fBirthTime < mintime)

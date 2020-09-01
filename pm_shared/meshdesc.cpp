@@ -13,8 +13,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#define WIN32_LEAN_AND_MEAN
-#include "windows.h"
+//#define WIN32_LEAN_AND_MEAN
+//#include "windows.h"
 #include <alert.h>
 #include "vector.h"
 #include "matrix.h"
@@ -36,7 +36,7 @@ GNU General Public License for more details.
 #endif
 
 #include "enginecallback.h"
-
+#include <new> // placement
 CMeshDesc *UTIL_GetCollisionMesh( int modelindex )
 {
 	model_t *mod = (model_t *)MODEL_HANDLE( modelindex );
@@ -52,10 +52,10 @@ CMeshDesc *UTIL_GetCollisionMesh( int modelindex )
 	if( !mod->cache.data )
 		return NULL;
 
-	CMeshDesc *bodyMesh = (CMeshDesc *)Mem_Alloc( sizeof( CMeshDesc ));
+	CMeshDesc *bodyMesh = new (Mem_Alloc( sizeof( CMeshDesc )) ) CMeshDesc();
 	if( !bodyMesh ) return NULL;
 
-	bodyMesh->CMeshDesc::CMeshDesc();
+//	bodyMesh->CMeshDesc();
 	bodyMesh->SetDebugName( mod->name );
 	bodyMesh->SetModel( mod );
 
@@ -932,7 +932,8 @@ bool CMeshDesc :: StudioConstructMesh( void )
 	static Vector4D q[MAXSTUDIOBONES];
 	int totalVertSize = 0;
 
-	for( int i = 0; i < phdr->numbones; i++, pbone++, panim++ ) 
+	int i;
+	for( i = 0; i < phdr->numbones; i++, pbone++, panim++ ) 
 	{
 		StudioCalcBoneTransform( 0, pbone, panim, pos[i], q[i] );
 	}
@@ -1151,7 +1152,8 @@ bool CMeshDesc :: FinishMeshBuild( void )
 		return false;
 	}
 
-	for( int i = 0; i < 3; i++ )
+	int i;
+	for( i = 0; i < 3; i++ )
 	{
 		// spread the mins / maxs by a pixel
 		m_mesh.mins[i] -= 1.0f;

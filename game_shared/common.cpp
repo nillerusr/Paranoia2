@@ -13,8 +13,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#define NOMINMAX
-#include <windows.h>
+//#define NOMINMAX
+//#include <windows.h>
 #include <stdio.h>
 #include <vector.h>
 #include <matrix.h>
@@ -23,7 +23,7 @@ GNU General Public License for more details.
 #include <const.h>
 #include <com_model.h>
 #include <fcntl.h>
-#include <io.h>
+//#include <io.h>
 
 /*
 ============

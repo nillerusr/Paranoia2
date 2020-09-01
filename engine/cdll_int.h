@@ -27,11 +27,22 @@ extern "C" {
 #endif
 
 #include "const.h"
+
+#define MAX_ALIAS_NAME	32
+
+typedef struct cmdalias_s
+{
+	struct cmdalias_s	*next;
+	char		name[MAX_ALIAS_NAME];
+	char		*value;
+} cmdalias_t;
+
 #include <alert.h>
 
 #ifndef offsetof
-#define offsetof(s,m)	(size_t)&(((s *)0)->m)
+#define offsetof(s,m)  (size_t)&(((s *)0)->m)
 #endif
+
 
 // this file is included by both the engine and the client-dll,
 // so make sure engine declarations aren't done twice

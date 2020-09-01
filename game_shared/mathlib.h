@@ -34,6 +34,7 @@ typedef float vec_t;
 #define Q_round( x, y )		(floor( x / y + 0.5 ) * y )
 #define Q_square( a )		((a) * (a))
 #define Q_sign( x )			( x >= 0 ? 1.0 : -1.0 )
+#define Q_abs( x )		((x)<0?-(x):x)
 
 #define bound( min, num, max )	((num) >= (min) ? ((num) < (max) ? (num) : (max)) : (min))
 #define saturate( val )		((val) >= 0 ? ((val) < 1 ? (val) : 1) : 0)

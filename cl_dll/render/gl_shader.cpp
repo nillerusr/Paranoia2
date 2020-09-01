@@ -1146,8 +1146,9 @@ word GL_FindUberShader( const char *glname, const char *options )
 			return (word)(prog - glsl_programs);
 	}
 
+	int i;
 	// find free spot
-	for( int i = 1; i < num_glsl_programs; i++ )
+	for( i = 1; i < num_glsl_programs; i++ )
 		if( !glsl_programs[i].name[0] )
 			break;
 
@@ -1188,8 +1189,9 @@ word GL_FindShader( const char *glname, const char *vpname, const char *fpname, 
 			return (word)(prog - glsl_programs);
 	}
 
+	int i;
 	// find free spot
-	for( int i = 1; i < num_glsl_programs; i++ )
+	for( i = 1; i < num_glsl_programs; i++ )
 		if( !glsl_programs[i].name[0] )
 			break;
 

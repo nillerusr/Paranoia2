@@ -152,7 +152,7 @@ public:
 						// MUST CHECK WHETHER THIS RESULT IS NULL!
 	// returns false if the particle has died
 	bool UpdateParticle( CParticle *part, float frametime );
-	void DrawParticle( CParticle *part, Vector &right, Vector &up );
+	void DrawParticle( CParticle *part, const Vector &right, const Vector &up );
 
 	// Utility functions that have to be public
 	bool ParticleIsVisible( CParticle* part );

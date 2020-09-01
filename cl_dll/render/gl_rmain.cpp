@@ -87,7 +87,8 @@ void R_BuildViewPassHierarchy( void )
 
 		if( glState.stack_position > 0 )
 			num_faces = R_GetPrevInstance()->frame.num_subview_faces;
-		for( unsigned int i = 0; i < glState.stack_position; i++ )
+		unsigned int i;
+		for( i = 0; i < glState.stack_position; i++ )
 			empty[i] = ' ';
 		empty[i] = '\0';
 

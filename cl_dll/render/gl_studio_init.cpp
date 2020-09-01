@@ -1541,8 +1541,9 @@ void CStudioModelRenderer :: SetupSubmodelVerts( const mstudiomodel_t *pSubModel
 
 		// search for submodel offset
 		int	offset = (byte *)pSubModel - (byte *)m_pStudioHeader;
+		int j;
 
-		for( int j = 0; j < MAXSTUDIOMODELS; j++ )
+		for( j = 0; j < MAXSTUDIOMODELS; j++ )
 		{
 			if( m_tbnverts->submodels[j].submodel_offset == offset )
 				break;			

@@ -88,7 +88,7 @@ typedef struct
 	int	fPlayTrack;
 } CDStatus;
 		
-typedef unsigned int	CRC32_t;
+//typedef unsigned int	CRC32_t;
 
 // Engine hands this to DLLs for functionality callbacks
 typedef struct enginefuncs_s
