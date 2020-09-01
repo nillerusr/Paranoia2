@@ -20,7 +20,7 @@ cvar_t *scroll_speed;
 cvar_t *fade_speed;
 
 
-Font* FontFromMessage(char* &ptext)
+Font* FontFromMessage(const char* ptext)
 {
 	char fontname[64] = "Default Text";
 	if (ptext != NULL && ptext[0] != 0)

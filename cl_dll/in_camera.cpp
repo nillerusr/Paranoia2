@@ -4,7 +4,6 @@
 //
 // $NoKeywords: $
 //=============================================================================
-#if 0
 // TODO: import hlsdk-xash3d input
 
 #include "hud.h"
@@ -17,7 +16,9 @@
 #include "camera.h"
 #include "in_defs.h"
 #include "gl_local.h"
+#if XASH_WIN32
 #include "windows.h"
+#endif
 
 float CL_KeyState (kbutton_t *key);
 
@@ -90,6 +91,10 @@ void CAM_ToFirstPerson(void);
 void CAM_StartDistance(void);
 void CAM_EndDistance(void);
 
+#if !XASH_WIN32
+void SetCursorPos( int x, int y ) { }
+void GetCursorPos( POINT *p ) { gEngfuncs.GetMousePosition( (int *)&p->x, (int *)&p->y ); }
+#endif
 
 //-------------------------------------------------- Local Functions
 
@@ -621,5 +626,3 @@ void DLLEXPORT CL_CameraOffset( float *ofs )
 {
 	VectorCopy( cam_ofs, ofs );
 }
-
-#endif

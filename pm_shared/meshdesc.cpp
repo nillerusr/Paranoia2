@@ -1003,7 +1003,7 @@ bool CMeshDesc :: StudioConstructMesh( void )
 			float t = 1.0f / (float)ptexture[pskinref[pmesh->skinref]].height;
 			int flags = ptexture[pskinref[pmesh->skinref]].flags;
 
-			while( i = *( ptricmds++ ))
+			while(( i = *( ptricmds++ )))
 			{
 				int	vertexState = 0;
 				bool	tri_strip;

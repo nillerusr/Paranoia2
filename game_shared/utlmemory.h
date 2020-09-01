@@ -198,9 +198,9 @@ public:
 
 	void Grow( int nCount = 1 )
 	{
-		if ( IsExternallyAllocated() )
+		if ( this->IsExternallyAllocated() )
 		{
-			ConvertToGrowableMemory( m_nMallocGrowSize );
+			this->ConvertToGrowableMemory( m_nMallocGrowSize );
 		}
 		BaseClass::Grow( nCount );
 	}
@@ -210,10 +210,10 @@ public:
 		if ( CUtlMemory<T>::m_nAllocationCount >= num )
 			return;
 
-		if ( IsExternallyAllocated() )
+		if ( this->IsExternallyAllocated() )
 		{
 			// Can't grow a buffer whose memory was externally allocated 
-			ConvertToGrowableMemory( m_nMallocGrowSize );
+			this->ConvertToGrowableMemory( m_nMallocGrowSize );
 		}
 
 		BaseClass::EnsureCapacity( num );
@@ -302,7 +302,7 @@ template< class T, class I >
 CUtlMemory<T,I>::CUtlMemory( int nGrowSize, int nInitAllocationCount ) : m_pMemory(0), 
 	m_nAllocationCount( nInitAllocationCount ), m_nGrowSize( nGrowSize )
 {
-	ValidateGrowSize();
+	this->ValidateGrowSize();
 	assert( nGrowSize >= 0 );
 	if (m_nAllocationCount)
 	{
@@ -339,7 +339,7 @@ void CUtlMemory<T,I>::Init( int nGrowSize /*= 0*/, int nInitSize /*= 0*/ )
 
 	m_nGrowSize = nGrowSize;
 	m_nAllocationCount = nInitSize;
-	ValidateGrowSize();
+	this->ValidateGrowSize();
 	assert( nGrowSize >= 0 );
 	if (m_nAllocationCount)
 	{
@@ -365,7 +365,7 @@ void CUtlMemory<T,I>::Swap( CUtlMemory<T,I> &mem )
 template< class T, class I >
 void CUtlMemory<T,I>::ConvertToGrowableMemory( int nGrowSize )
 {
-	if ( !IsExternallyAllocated() )
+	if ( !this->IsExternallyAllocated() )
 		return;
 
 	m_nGrowSize = nGrowSize;
@@ -481,10 +481,10 @@ bool CUtlMemory<T,I>::IsReadOnly() const
 template< class T, class I >
 void CUtlMemory<T,I>::SetGrowSize( int nSize )
 {
-	assert( !IsExternallyAllocated() );
+	assert( !this->IsExternallyAllocated() );
 	assert( nSize >= 0 );
 	m_nGrowSize = nSize;
-	ValidateGrowSize();
+	this->ValidateGrowSize();
 }
 
 
@@ -569,7 +569,7 @@ void CUtlMemory<T,I>::Grow( int num )
 {
 	assert( num > 0 );
 
-	if ( IsExternallyAllocated() )
+	if ( this->IsExternallyAllocated() )
 	{
 		// Can't grow a buffer whose memory was externally allocated 
 		assert(0);
@@ -626,7 +626,7 @@ inline void CUtlMemory<T,I>::EnsureCapacity( int num )
 	if (m_nAllocationCount >= num)
 		return;
 
-	if ( IsExternallyAllocated() )
+	if ( this->IsExternallyAllocated() )
 	{
 		// Can't grow a buffer whose memory was externally allocated 
 		assert(0);
@@ -652,7 +652,7 @@ inline void CUtlMemory<T,I>::EnsureCapacity( int num )
 template< class T, class I >
 void CUtlMemory<T,I>::Purge()
 {
-	if ( !IsExternallyAllocated() )
+	if ( !this->IsExternallyAllocated() )
 	{
 		if (m_pMemory)
 		{
@@ -682,7 +682,7 @@ void CUtlMemory<T,I>::Purge( int numElements )
 		return;
 	}
 
-	if ( IsExternallyAllocated() )
+	if ( this->IsExternallyAllocated() )
 	{
 		// Can't shrink a buffer whose memory was externally allocated, fail silently like purge 
 		return;
@@ -763,7 +763,7 @@ CUtlMemoryAligned<T, nAlignment>::CUtlMemoryAligned( int nGrowSize, int nInitAll
 	CUtlMemory<T>::m_pMemory = 0; 
 	CUtlMemory<T>::m_nAllocationCount = nInitAllocationCount;
 	CUtlMemory<T>::m_nGrowSize = nGrowSize;
-	ValidateGrowSize();
+	this->ValidateGrowSize();
 
 	// Alignment must be a power of two
 	COMPILE_TIME_ASSERT( (nAlignment & (nAlignment-1)) == 0 );
@@ -839,7 +839,7 @@ void CUtlMemoryAligned<T, nAlignment>::Grow( int num )
 {
 	assert( num > 0 );
 
-	if ( IsExternallyAllocated() )
+	if ( this->IsExternallyAllocated() )
 	{
 		// Can't grow a buffer whose memory was externally allocated 
 		assert(0);
@@ -874,7 +874,7 @@ inline void CUtlMemoryAligned<T, nAlignment>::EnsureCapacity( int num )
 	if ( CUtlMemory<T>::m_nAllocationCount >= num )
 		return;
 
-	if ( IsExternallyAllocated() )
+	if ( this->IsExternallyAllocated() )
 	{
 		// Can't grow a buffer whose memory was externally allocated 
 		assert(0);
@@ -900,7 +900,7 @@ inline void CUtlMemoryAligned<T, nAlignment>::EnsureCapacity( int num )
 template< class T, int nAlignment >
 void CUtlMemoryAligned<T, nAlignment>::Purge()
 {
-	if ( !IsExternallyAllocated() )
+	if ( !this->IsExternallyAllocated() )
 	{
 		if ( CUtlMemory<T>::m_pMemory )
 		{

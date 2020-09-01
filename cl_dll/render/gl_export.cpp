@@ -13,7 +13,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#define APIENTRY_LINKAGE
+#define EXTERN
+#include "gl_export.h"
 #include "hud.h"
 #include "cl_util.h"
 #include "gl_local.h"

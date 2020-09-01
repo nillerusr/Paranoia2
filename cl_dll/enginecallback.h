@@ -78,7 +78,7 @@ extern render_api_t gRenderfuncs;
 #define Sys_DoubleTime	(*gRenderfuncs.pfnTime)
 
 // sound functions (we can't use macroses - this names is collide with standard windows methods)
-inline void PlaySound( char *szSound, float vol ) { gEngfuncs.pfnPlaySoundByName( szSound, vol ); }
+inline void PlaySound( const char *szSound, float vol ) { gEngfuncs.pfnPlaySoundByName( szSound, vol ); }
 inline void PlaySound( int iSound, float vol ) { gEngfuncs.pfnPlaySoundByIndex( iSound, vol ); }
 
 // render api callbacks
@@ -155,7 +155,7 @@ inline void PlaySound( int iSound, float vol ) { gEngfuncs.pfnPlaySoundByIndex( 
 
 #define IMAGE_EXISTS( path )		( FILE_EXISTS( va( "%s.tga", path )) || FILE_EXISTS( va( "%s.dds", path )))
 
-extern void ALERT( ALERT_TYPE level, char *szFmt, ... );
+extern void ALERT( ALERT_TYPE level, const char *szFmt, ... );
 	
 inline bool FILE_EXISTS( const char *filename )
 {

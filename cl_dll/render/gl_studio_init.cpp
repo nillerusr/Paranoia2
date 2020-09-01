@@ -1216,7 +1216,7 @@ void CStudioModelRenderer :: SetupSubmodelVerts( const mstudiomodel_t *pSubModel
 			smooth_tbn = true;
 
 		// first create trifan array from studiomodel mesh
-		while( count = *( ptricmds++ ))
+		while(( count = *( ptricmds++ )))
 		{
 			bool	strip = ( count < 0 ) ? false : true;
 			int	vertexState = 0;

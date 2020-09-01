@@ -169,30 +169,6 @@ _forceinline size_t CVirtualFS :: IPrint( const char *message )
 	return Insert( message, Q_strlen( message ));
 }
 
-size_t CVirtualFS :: Printf( const char *fmt, ... )
-{
-	size_t result;
-	va_list args;
-
-	va_start( args, fmt );
-	result = VPrintf( fmt, args );
-	va_end( args );
-
-	return result;
-}
-
-size_t CVirtualFS :: IPrintf( const char *fmt, ... )
-{
-	size_t result;
-	va_list args;
-
-	va_start( args, fmt );
-	result = IVPrintf( fmt, args );
-	va_end( args );
-
-	return result;
-}
-
 _forceinline size_t CVirtualFS :: VPrintf( const char *fmt, va_list ap )
 {
 	size_t	buff_size = FS_MSG_BLOCK;

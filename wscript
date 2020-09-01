@@ -179,12 +179,6 @@ def configure(conf):
 		'-Werror=bool-compare',
 		'-Werror=bool-operation',
 		'-Wstrict-aliasing',
-		'-Wno-attributes',
-		'-Wno-missing-pragmas',
-		'-Wno-overloaded-virtual',
-		'-Wno-unknown-pragmas',
-		'-Wno-write-strings',
-		'-std=gnu++98'
 	]
 
 	c_compiler_optional_flags = [

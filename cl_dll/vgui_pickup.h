@@ -8,8 +8,8 @@ using namespace vgui;
 
 #include "vgui_shadowtext.h"
 #include "VGUI_TextImage.h"
+#include "getfont.h"
 
-Font* FontFromMessage(char* &ptext);
 void CheckPanel();
 
 
