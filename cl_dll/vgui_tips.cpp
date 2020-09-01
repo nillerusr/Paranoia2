@@ -30,9 +30,6 @@ void ShowTip( client_textmessage_t *tempMessage )
 		gEngfuncs.Con_Printf("Tips error: m_pTips or ViewPort is not constructed!\n");
 }
 
-
-Font* FontFromMessage(const char* &ptext);
-
 void CTips::Initialize()
 {
 	setVisible(false);

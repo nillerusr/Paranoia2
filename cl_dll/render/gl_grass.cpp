@@ -1117,7 +1117,8 @@ find or add unique texture for grass
 */
 byte R_GrassTextureForName( const char *name )
 {
-	for( byte i = 0; i < GRASS_TEXTURES && grasstexs[i].name[0]; i++ )
+	byte i;
+	for( i = 0; i < GRASS_TEXTURES && grasstexs[i].name[0]; i++ )
 	{
 		if( !Q_stricmp( grasstexs[i].name, name ))
 			return i;	// found

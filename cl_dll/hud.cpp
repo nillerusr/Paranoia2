@@ -36,7 +36,7 @@
 #include "studio.h"
 #include "demo.h"
 #include "demo_api.h"
-#include "vgui_scorepanel.h"
+#include "vgui_ScorePanel.h"
 #include "gl_local.h" // buz
 #include "r_studioint.h"
 
@@ -708,7 +708,7 @@ void CHud :: VidInit( void )
 
 			p = m_pSpriteList;
 			int index = 0;
-			for ( j = 0; j < m_iSpriteCountAllRes; j++ )
+			for ( int j = 0; j < m_iSpriteCountAllRes; j++ )
 			{
 				if ( p->iRes == m_iRes )
 				{

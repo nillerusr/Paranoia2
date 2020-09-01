@@ -422,7 +422,7 @@ static void GL_DrawBilateralFilter( word hProgram, int pass )
 		case UT_COLORMAP:
 			if( pass == BILATERAL_PASS0 )
 				u->SetValue( tr.fbo_light.GetTexture() );
-			else if( pass = BILATERAL_PASS1 )
+			else if( pass == BILATERAL_PASS1 )
 				u->SetValue( tr.fbo_filter.GetTexture() );
 			else u->SetValue( tr.defscene_fbo->colortarget[0] );
 			break;
@@ -435,7 +435,7 @@ static void GL_DrawBilateralFilter( word hProgram, int pass )
 		case UT_SCREENSIZEINV:
 			if( pass == BILATERAL_PASS0 )
 				u->SetValue( 1.0f / (float)glState.width, 0.0f );
-			else if( pass = BILATERAL_PASS1 )
+			else if( pass == BILATERAL_PASS1 )
 				u->SetValue( 0.0f, 1.0f / (float)glState.height );
 			else u->SetValue( 1.0f / (float)glState.width, 1.0f / (float)glState.height );
 			break;

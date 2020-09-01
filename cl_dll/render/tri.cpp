@@ -21,8 +21,6 @@
 #include "com_model.h"
 #include "gl_local.h"// buz
 
-#define DLLEXPORT __declspec( dllexport )
-
 extern "C"
 {
 	void DLLEXPORT HUD_DrawNormalTriangles( void );

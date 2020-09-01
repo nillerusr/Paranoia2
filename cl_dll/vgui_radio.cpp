@@ -50,7 +50,7 @@ void CRadioIcon::Initialize()
 
 CRadioIcon::CRadioIcon() : Panel(0, 0, 10, 10)
 {
-	if( m_pSpeakerBitmap = vgui_LoadTGANoInvertAlpha("gfx/vgui/speaker4.tga" ) )
+	if(( m_pSpeakerBitmap = vgui_LoadTGANoInvertAlpha("gfx/vgui/speaker4.tga" ) ))
 		m_pSpeakerBitmap->setColor( Color(255,255,255,1) );
 	else
 		gEngfuncs.Con_Printf("Cannot load gfx/vgui/speaker4.tga!\n");

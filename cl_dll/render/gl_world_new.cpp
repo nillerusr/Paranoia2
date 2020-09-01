@@ -146,7 +146,7 @@ check cubemap sides for valid
 */
 static bool Mod_CheckCubemap( const char *name )
 {
-	char	*suf[6] = { "px", "nx", "py", "ny", "pz", "nz" };
+	const char	*suf[6] = { "px", "nx", "py", "ny", "pz", "nz" };
 	int	valid_sides = 0;
 	char	sidename[64];
 	int	iCompare;
@@ -175,7 +175,7 @@ remove cubemap images from HDD
 */
 static void Mod_DeleteCubemap( const char *name )
 {
-	char	*suf[6] = { "px", "nx", "py", "ny", "pz", "nz" };
+	const char	*suf[6] = { "px", "nx", "py", "ny", "pz", "nz" };
 	char	sidename[64];
 
 	for( int i = 0; i < 6; i++ )
@@ -328,7 +328,7 @@ void GL_LoadAndRebuildCubemaps( int refParams )
 
 		// bind cubemaps onto world surfaces
 		// so we don't need to search them again
-		for( i = 0; i < worldmodel->numsurfaces; i++ )
+		for( int i = 0; i < worldmodel->numsurfaces; i++ )
 		{
 			msurface_t *surf = &worldmodel->surfaces[i];
 			mextrasurf_t *es = surf->info;
@@ -405,7 +405,7 @@ static void Mod_LoadCubemaps( const byte *base, const dlump_t *l )
 		cm->size = 4;
 	}
 
-	for( i = 0; i < count; i++, in++, out++ )
+	for( int i = 0; i < count; i++, in++, out++ )
 	{
 		// build a cubemap name like enum
 		Q_snprintf( out->name, sizeof( out->name ), "maps/env/%s/cube#%i", world->name, i );
@@ -965,12 +965,12 @@ Mod_SurfaceCompareBuild
 sort faces before lightmap building
 =================
 */
-static int Mod_SurfaceCompareBuild( const unsigned short **a, const unsigned short **b )
+static int Mod_SurfaceCompareBuild( const unsigned short *a, const unsigned short *b )
 {
 	msurface_t	*surf1, *surf2;
 
-	surf1 = &worldmodel->surfaces[(unsigned short)*a];
-	surf2 = &worldmodel->surfaces[(unsigned short)*b];
+	surf1 = &worldmodel->surfaces[*a];
+	surf2 = &worldmodel->surfaces[*b];
 
 	if( FBitSet( surf1->flags, SURF_DRAWSKY ) && !FBitSet( surf2->flags, SURF_DRAWSKY ))
 		return -1;
@@ -1002,13 +1002,13 @@ Mod_SurfaceCompareInGame
 sort faces to reduce shader switches
 =================
 */
-static int Mod_SurfaceCompareInGame( const unsigned short **a, const unsigned short **b )
+static int Mod_SurfaceCompareInGame( const unsigned short *a, const unsigned short *b )
 {
 	msurface_t	*surf1, *surf2;
 	mextrasurf_t	*esrf1, *esrf2;
 
-	surf1 = &worldmodel->surfaces[(unsigned short)*a];
-	surf2 = &worldmodel->surfaces[(unsigned short)*b];
+	surf1 = &worldmodel->surfaces[*a];
+	surf2 = &worldmodel->surfaces[*b];
 
 	esrf1 = surf1->info;
 	esrf2 = surf2->info;

@@ -211,13 +211,13 @@ void CL_BuildCubemaps_f( void )
 {
 	mcubemap_t *m = &world->defaultCubemap;
 	FREE_TEXTURE( m->texture );
-	m->valid = m->texture = false;
+	m->valid = ( m->texture = false );
 
 	for( int i = 0; i < world->num_cubemaps; i++ )
 	{
 		mcubemap_t *m = &world->cubemaps[i];
 		FREE_TEXTURE( m->texture );
-		m->valid = m->texture = false;
+		m->valid = ( m->texture = false );
 	}
 
 	if( FBitSet( world->features, WORLD_HAS_SKYBOX ))

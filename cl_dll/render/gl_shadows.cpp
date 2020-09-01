@@ -196,7 +196,7 @@ static int R_ComputeCropBounds( const matrix4x4 &lightViewProjection, Vector bou
 	}
 
 	// add studio models too
-	for( i = 0; i < prevRI->frame.solid_meshes.Count(); i++ )
+	for( int i = 0; i < prevRI->frame.solid_meshes.Count(); i++ )
 	{
 		if( !R_StudioGetBounds( &prevRI->frame.solid_meshes[i], worldBounds ))
 			continue;

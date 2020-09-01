@@ -1137,7 +1137,7 @@ void CStudioModelRenderer :: AddDecalToModel( DecalBuildInfo_t& buildInfo )
 		float s = 1.0f / (float)ptexture->width;
 		float t = 1.0f / (float)ptexture->height;
 
-		while( numVerts = *( ptricmds++ ))
+		while(( numVerts = *( ptricmds++ )))
 		{
 			bool	strip = ( numVerts < 0 ) ? false : true;
 			int	vertexState = 0;

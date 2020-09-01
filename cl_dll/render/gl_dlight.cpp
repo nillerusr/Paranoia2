@@ -751,7 +751,7 @@ get_next_light:
 	int ignored = -1;
 	int light = 255;
 
-	for( i = 0; i < count; i++ )
+	for( int i = 0; i < count; i++ )
 	{
 		if( indexes[i][0] == -1.0f )
 			continue;
@@ -768,6 +768,7 @@ get_next_light:
 	if( ignored == -1 )
 		return;
 
+	int i;
 	for( i = 0; i < (int)cv_deferred_maxlights->value && lights[i] != 255; i++ );
 	if( i < (int)cv_deferred_maxlights->value )
 		lights[i] = light;	// nearest light for surf

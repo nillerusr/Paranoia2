@@ -12,7 +12,11 @@
 #include "hud_servers.h"
 #include "net_api.h"
 #include <string.h>
+#if XASH_WIN32
 #include <winsock.h>
+#else
+#include <arpa/inet.h>
+#endif
 
 static int	context_id;
 
@@ -599,7 +603,7 @@ int CompareField( CHudServers::server_t *p1, CHudServers::server_t *p2, const ch
 	return stricmp( sz1, sz2 );
 }
 
-int CALLBACK ServerListCompareFunc( CHudServers::server_t *p1, CHudServers::server_t *p2, const char *fieldname )
+int ServerListCompareFunc( CHudServers::server_t *p1, CHudServers::server_t *p2, const char *fieldname )
 {
 	if (!p1 || !p2)  // No meaningful comparison
 		return 0;  
@@ -750,7 +754,7 @@ int CHudServers::LoadMasterAddresses( int maxservers, int *count, netadr_t *padr
 	char		szMaster[ 256 ];
 	char		szMasterFile[256];
 	char		*pbuffer = NULL;
-	char		*pstart = NULL ;
+	const char	*pstart = NULL ;
 	netadr_t	adr;
 	char		szAdr[64];
 	int			nPort;

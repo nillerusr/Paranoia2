@@ -929,7 +929,9 @@ void CParticleSystem :: DrawSystem( void )
 	{
 		if( pParticle->m_fSize <= 0 || !ParticleIsVisible( pParticle ))
 			continue;
-		DrawParticle( pParticle, GetVLeft(), GetVUp( ));
+		Vector vLeft = GetVLeft();
+		Vector vUp = GetVUp();
+		DrawParticle( pParticle, vLeft, vUp);
 	}
 }
 
@@ -1068,7 +1070,8 @@ void CParticleSystem :: DrawParticle( CParticle *part, const vec3_t &right, cons
 	point[3] = origin + up * -fSinSize + right * fCosSize;	
 
 	ClearBounds( absmin, absmax );
-	for( int i = 0; i < 4; i++ )
+	int i;
+	for( i = 0; i < 4; i++ )
 		AddPointToBounds( point[i], absmin, absmax );
 
 	int iContents = CONTENTS_NONE;

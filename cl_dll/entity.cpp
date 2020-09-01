@@ -22,8 +22,6 @@
 #include "gl_local.h"
 #include "gl_studio.h"
 
-#define DLLEXPORT __declspec( dllexport )
-
 void Game_AddObjects( void );
 
 extern vec3_t v_origin;

@@ -7,9 +7,7 @@
 using namespace vgui;
 
 #include "vgui_shadowtext.h"
-
-Font* FontFromMessage(const char* &ptext);
-
+#include "getfont.h"
 
 class CScreenMessage : public ShadowTextPanel
 {

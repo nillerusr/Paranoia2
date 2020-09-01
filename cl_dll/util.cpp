@@ -18,9 +18,10 @@
 // implementation of class-less helper functions
 //
 
-#include "STDIO.H"
-#include "STDLIB.H"
-#include "MATH.H"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdarg.h>
 
 #include "hud.h"
 #include "cl_util.h"
@@ -43,7 +44,7 @@ pfnAlertMessage
 
 =============
 */
-void ALERT( ALERT_TYPE level, char *szFmt, ... )
+void ALERT( ALERT_TYPE level, const char *szFmt, ... )
 {
 	char	buffer[2048];	// must support > 1k messages
 	va_list	args;

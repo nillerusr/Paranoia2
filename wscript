@@ -255,7 +255,7 @@ def configure(conf):
 		pass
 	else:
 		conf.env.append_unique('DEFINES', ['stricmp=strcasecmp', 'strnicmp=strncasecmp', '_snprintf=snprintf', '_vsnprintf=vsnprintf', '_LINUX', 'LINUX'])
-		conf.env.append_unique('CXXFLAGS', ['-Wno-invalid-offsetof', '-fno-rtti', '-fno-exceptions'])
+		conf.env.append_unique('CXXFLAGS', ['-Wno-invalid-offsetof', '-fno-rtti'])
 
 	# strip lib from pattern
 	if conf.env.DEST_OS in ['linux', 'darwin']:

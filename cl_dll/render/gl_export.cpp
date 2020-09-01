@@ -13,8 +13,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#define EXTERN
-
+#define APIENTRY_LINKAGE
 #include "hud.h"
 #include "cl_util.h"
 #include "gl_local.h"
@@ -355,7 +354,7 @@ DebugCallback
 For ARB_debug_output
 ========================
 */
-static void CALLBACK GL_DebugOutput( GLuint source, GLuint type, GLuint id, GLuint severity, GLint length, const GLcharARB *message, GLvoid *userParam )
+static void APIENTRY GL_DebugOutput( GLuint source, GLuint type, GLuint id, GLuint severity, GLint length, const GLcharARB *message, GLvoid *userParam )
 {
 	static char	string[8192];
 	char		*msg;
@@ -502,10 +501,10 @@ static void GL_InitExtensions( void )
 	}
 
 	// get our various GL strings
-	glConfig.vendor_string = pglGetString( GL_VENDOR );
-	glConfig.renderer_string = pglGetString( GL_RENDERER );
-	glConfig.version_string = pglGetString( GL_VERSION );
-	glConfig.extensions_string = pglGetString( GL_EXTENSIONS );
+	glConfig.vendor_string = (const char*)pglGetString( GL_VENDOR );
+	glConfig.renderer_string = (const char*)pglGetString( GL_RENDERER );
+	glConfig.version_string = (const char*)pglGetString( GL_VERSION );
+	glConfig.extensions_string = (const char*)pglGetString( GL_EXTENSIONS );
 
 	if( Q_stristr( glConfig.renderer_string, "geforce" ))
 		glConfig.hardware_type = GLHW_NVIDIA;

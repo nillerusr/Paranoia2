@@ -66,6 +66,7 @@ GNU General Public License for more details.
 	#define FreeLibrary( x )			dlclose( x )
 	#define tell( a )					lseek(a, 0, SEEK_CUR)
 	#define HAVE_DUP
+	#define _aligned_malloc( x, y ) aligned_alloc( y, x ) // man 3 posix_memalign
 #endif
 
 #if XASH_DOS4GW
@@ -151,6 +152,14 @@ GNU General Public License for more details.
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
+
+#if !defined MAX_PATH
+#define MAX_PATH 4096 // 4k ought to be enough for anybody
+#endif
+
+#if __cplusplus >= 2011L
+#define COMPILE_TIME_ASSERT static_assert
+#endif
 
 #if defined XASH_SDL && !defined REF_DLL
 #include <SDL.h>
