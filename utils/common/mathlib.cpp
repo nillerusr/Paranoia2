@@ -193,7 +193,7 @@ SinCos
 */
 void SinCos( float radians, float *sine, float *cosine )
 {
-	#ifdef _MSC_VER
+	#if defined _MSC_VER && defined(__i386__)
 	_asm
 	{
 		fld	dword ptr [radians]
