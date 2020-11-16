@@ -18,8 +18,10 @@ GNU General Public License for more details.
 #ifndef CMDLIB_H
 #define CMDLIB_H
 
+#include "port.h"
 #include <basetypes.h>
 #include "conprint.h"
+#include "mathlib.h"
 
 // bit routines
 #define BIT( n )			(1<<( n ))

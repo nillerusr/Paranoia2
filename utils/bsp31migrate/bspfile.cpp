@@ -1205,8 +1205,5 @@ int BspConvert( int argc, char **argv )
 	Mem_Free( search );
 	Mem_Check();
 
-	Msg( "press any key to exit\n" );
-	system( "pause>nul" );
-
 	return 0;
 }

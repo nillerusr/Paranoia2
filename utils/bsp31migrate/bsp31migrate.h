@@ -16,7 +16,7 @@ GNU General Public License for more details.
 #ifndef BSP31MIGRATE_H
 #define BSP31MIGRATE_H
 
-#include <windows.h>
+#include "port.h"
 #include "cmdlib.h"
 #include "mathlib.h"
 #include "stringlib.h"
@@ -26,7 +26,6 @@ GNU General Public License for more details.
 #include "wadfile.h"
 #include "bspfile31.h"
 #include <fcntl.h>
-#include <io.h>
 
 typedef enum
 {

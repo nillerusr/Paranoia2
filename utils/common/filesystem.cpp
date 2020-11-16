@@ -13,11 +13,19 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#ifdef _WIN32
 #include <windows.h>
 #include <direct.h>
+#include <io.h>
+#else
+#include <dirent.h>
+#include <errno.h>
+#include <unistd.h>
+#define O_BINARY 0
+#endif
+
 #include <fcntl.h>
 #include <stdio.h>
-#include <io.h>
 #include "conprint.h"
 #include "cmdlib.h"
 #include "stringlib.h"
@@ -147,16 +155,21 @@ void stringlistsort( stringlist_t *list )
 	}
 }
 
-void listdirectory( stringlist_t *list, const char *path, bool tolower )
+void listdirectory( stringlist_s *list, const char *path, bool lowercase )
 {
-	char		pattern[4096];
-	struct _finddata_t	n_file;
-	long		hFile;
-	char		*c;
 	int		i;
+	signed char *c;
+#ifdef _WIN32
+	char pattern[4096];
+	struct _finddata_t	n_file;
+	int		hFile;
+#else
+	DIR *dir;
+	struct dirent *entry;
+#endif
 
-	Q_strncpy( pattern, path, sizeof( pattern ));
-	Q_strncat( pattern, "*", sizeof( pattern ));
+#ifdef _WIN32
+	Q_snprintf( pattern, sizeof( pattern ), "%s*", path );
 
 	// ask for the directory listing handle
 	hFile = _findfirst( pattern, &n_file );
@@ -164,22 +177,33 @@ void listdirectory( stringlist_t *list, const char *path, bool tolower )
 
 	// start a new chain with the the first name
 	stringlistappend( list, n_file.name );
-
 	// iterate through the directory
 	while( _findnext( hFile, &n_file ) == 0 )
 		stringlistappend( list, n_file.name );
 	_findclose( hFile );
+#else
+	if( !( dir = opendir( path ) ) )
+		return;
 
-	if( !tolower ) return;
+	// iterate through the directory
+	while( ( entry = readdir( dir ) ))
+		stringlistappend( list, entry->d_name );
+	closedir( dir );
+#endif
 
 	// convert names to lowercase because windows doesn't care, but pattern matching code often does
-	for( i = 0; i < list->numstrings; i++ )
+	if( lowercase )
 	{
-		for( c = list->strings[i]; *c; c++ )
-			*c = Q_tolower( *c );
+		for( i = 0; i < list->numstrings; i++ )
+		{
+			for( c = (signed char *)list->strings[i]; *c; c++ )
+			{
+				if( *c >= 'A' && *c <= 'Z' )
+					*c += 'a' - 'A';
+			}
+		}
 	}
 }
-
 /*
 =============================================================================
 
@@ -212,20 +236,21 @@ search_t *COM_Search( const char *pattern, int caseinsensitive, wfile_t *source_
 		return NULL;
 	}
 
-	if( !GetCurrentDirectory( sizeof( root ), root ))
+	Q_getwd( root, sizeof( root ) );
+	if( !root )
 	{
 		MsgDev( D_ERROR, "couldn't determine current directory\n" );
 		return NULL;
 	}
 
-	Q_strncat( root, "\\", sizeof( root ));
 	stringlistinit( &resultlist );
 	stringlistinit( &dirlist );
+
 	slash = Q_strrchr( pattern, '/' );
 	backslash = Q_strrchr( pattern, '\\' );
 	colon = Q_strrchr( pattern, ':' );
-	separator = max( slash, backslash );
-	separator = max( separator, colon );
+	separator = Q_max( slash, backslash );
+	separator = Q_max( separator, colon );
 	basepathlength = separator ? (separator + 1 - pattern) : 0;
 	basepath = (char *)Mem_Alloc( basepathlength + 1 );
 	if( basepathlength ) memcpy( basepath, pattern, basepathlength );
@@ -357,7 +382,11 @@ void COM_CreatePath( char *path )
 			// create the directory
 			save = *ofs;
 			*ofs = 0;
-			_mkdir( path );
+#ifdef _WIN32
+			mkdir( path );
+#else
+			mkdir( path, 0777);
+#endif
 			*ofs = save;
 		}
 	}
@@ -555,9 +584,28 @@ COM_FolderExists
 */
 bool COM_FolderExists( const char *path )
 {
-	DWORD dwFlags = GetFileAttributes( path );
+#if XASH_WIN32
+	DWORD	dwFlags = GetFileAttributes( path );
 
-	return ( dwFlags != -1 ) && FBitSet( dwFlags, FILE_ATTRIBUTE_DIRECTORY );
+	return ( dwFlags != -1 ) && ( dwFlags & FILE_ATTRIBUTE_DIRECTORY );
+#else
+	DIR *dir = opendir( path );
+
+	if( dir )
+	{
+		closedir( dir );
+		return true;
+	}
+	else if( (errno == ENOENT) || (errno == ENOTDIR) )
+	{
+		return false;
+	}
+	else
+	{
+		MsgDev( D_ERROR, "FS_SysFolderExists: problem while opening dir: %s\n", strerror( errno ) );
+		return false;
+	}
+#endif
 }
 
 /*

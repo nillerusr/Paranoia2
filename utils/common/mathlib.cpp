@@ -193,6 +193,7 @@ SinCos
 */
 void SinCos( float radians, float *sine, float *cosine )
 {
+	#ifdef _MSC_VER
 	_asm
 	{
 		fld	dword ptr [radians]
@@ -204,6 +205,10 @@ void SinCos( float radians, float *sine, float *cosine )
 		fstp dword ptr [edx]
 		fstp dword ptr [eax]
 	}
+	#else
+		*sine = sin(radians);
+		*cosine = cos(radians);
+	#endif
 }
 
 /*
@@ -405,7 +410,8 @@ fast box on planeside test
 */
 int SignbitsForPlane( const vec3_t normal )
 {
-	for( int bits = 0, i = 0; i < 3; i++ )
+	int bits, i;
+	for( bits = 0, i = 0; i < 3; i++ )
 		if( normal[i] < 0.0f )
 			bits |= 1<<i;
 	return bits;

@@ -13,7 +13,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#include <windows.h>
+//#include <windows.h>
 #include "cmdlib.h"
 #include "threads.h"
 #include "stringlib.h"
@@ -62,7 +62,7 @@ static void *attempt_calloc( size_t size )
 		if(( base = (void *)calloc( size, 1 )) != NULL )
 			return base;
 		// try for half a second or so
-		Sleep( 100 );
+		usleep( 100000 );
 	}
 	return NULL;
 }

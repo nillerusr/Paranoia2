@@ -19,14 +19,15 @@ int main( int argc, char **argv )
 {
 	int  i;
 
-//	if( argc <= 1 )
-//		COM_FatalError( "usage: bsp31migrate -file <path.bsp> -output <path.bsp>\n" );
-
 	COM_InitCmdlib( argv, argc );
-
-	if(( i = COM_CheckParm( "-dev" )) != 0 )
-	{
+	i = COM_CheckParm( "-dev" );
+	if( i != 0 && argc > i+1 )
 		SetDeveloperLevel( atoi( argv[i+1] ));
+
+	if( COM_CheckParm( "--help" ) != 0 )
+	{
+		Msg( "usage: bsp31migrate -file <path.bsp> -output <path.bsp>\n" );
+		return 0;
 	}
 
 	return BspConvert( argc, argv );

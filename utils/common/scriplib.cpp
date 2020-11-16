@@ -28,7 +28,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "stringlib.h"
 #include "filesystem.h"
 #include <stdarg.h>
-#include <windows.h>
 
 /*
 =============================================================================
